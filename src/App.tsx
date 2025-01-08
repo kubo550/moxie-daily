@@ -5,13 +5,11 @@ import {Affirmation} from "./pages/Affirmation.tsx";
 
 const App = () => {
     return <Router>
-        <div>
-            <Routes>
-                <Route path="/" element={<Mootivation/>}/>
-                <Route path="/motivation" element={<Mootivation/>}/>
-                <Route path="/affirmation" element={<Affirmation/>}/>
-            </Routes>
-        </div>
+        <Routes>
+            <Route path="/" element={<Mootivation/>}/>
+            <Route path="/motivation" element={<Mootivation/>}/>
+            <Route path="/affirmation" element={<Affirmation/>}/>
+        </Routes>
     </Router>
 
 
