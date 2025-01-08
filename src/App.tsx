@@ -11,8 +11,6 @@ const App = () => {
             <Route path="/affirmation" element={<Affirmation/>}/>
         </Routes>
     </Router>
-
-
 };
 
 export default App
