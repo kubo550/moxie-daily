@@ -8,9 +8,6 @@ on:
 jobs:
   build:
     name: Build
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
 
     steps:
@@ -42,6 +39,9 @@ jobs:
           path: ./dist
 
   deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     name: Deploy
     needs: build
     runs-on: ubuntu-latest
