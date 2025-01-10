@@ -9,9 +9,20 @@ jobs:
   deployment:
     name: Deploy gh-pages
     runs-on: ubuntu-latest
+
     steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18' # Zmień wersję Node.js, jeśli używasz innej
+
+      - name: Install dependencies
+        run: npm install
+
       - name: Deploy project
-        url: ${{ steps.deployment.outputs.page_url }}
         env:
           VITE_APP_FIREBASE_API_KEY: ${{ secrets.VITE_APP_FIREBASE_API_KEY }}
           VITE_APP_FIREBASE_AUTH_DOMAIN: ${{ secrets.VITE_APP_FIREBASE_AUTH_DOMAIN }}
