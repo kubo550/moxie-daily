@@ -1,5 +1,6 @@
 {
   "name": "moxie-daily",
+  "homepage": "https://github.com/kubo550/moxie-daily",
   "private": true,
   "version": "0.0.0",
   "type": "module",
