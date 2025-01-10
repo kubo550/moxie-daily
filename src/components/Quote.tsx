@@ -31,12 +31,16 @@ const quoteStyles = {
     },
 };
 
+function fixQuote(text = '') {
+    return text.replace(/"/g, '');
+}
+
 export const Quote: FC<QuoteProps> = ({text}) => {
     return (
-        <div style={quoteStyles.container}>
+        <div style={quoteStyles.container} className="slide-in">
             <h2 style={quoteStyles.text}>
                 <span style={quoteStyles.quoteMarks}>“</span>
-                {text}
+                {fixQuote(text)}
                 <span style={quoteStyles.quoteMarks}>“</span>
             </h2>
         </div>
