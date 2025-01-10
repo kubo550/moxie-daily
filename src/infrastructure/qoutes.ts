@@ -13,7 +13,6 @@ export const getQuote = async (type: string): Promise<string> => {
         const currentTypeQuotes = quotes.filter(quote => quote.type === type);
         return randomElement(currentTypeQuotes)?.quote || randomElement(quotes).quote || '';
     } catch (error) {
-        console.log('get quote - error', error.message);
         return randomElement(fallbackQuotes).quote;
     }
 }

@@ -1,4 +1,4 @@
-import {FC} from "react";
+import {CSSProperties, FC} from "react";
 
 interface QuoteProps {
     text: string
@@ -15,7 +15,7 @@ const quoteStyles = {
         backdropFilter: "blur(15px) contrast(0.9) brightness(1.1)",
         WebkitBackdropFilter: "blur(15px) contrast(0.9) brightness(1.1)",
         textAlign: "center",
-    },
+    } as CSSProperties,
     text: {
         fontFamily: "'Arial', sans-serif",
         fontSize: "1.5rem",
