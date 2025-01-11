@@ -12,6 +12,7 @@ const styles = {
         overflow: "hidden",
         zIndex: -1,
         background: `url(${bgImage}) no-repeat center center fixed`,
+        backgroundSize: "cover",
     } as CSSProperties,
     video: {
         position: "absolute",
