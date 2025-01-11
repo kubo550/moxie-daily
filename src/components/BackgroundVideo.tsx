@@ -1,6 +1,7 @@
 import backgroundVideo from "/moxie_background.mp4";
+import {CSSProperties} from "react";
 
-const styles ={
+const styles = {
     videoContainer: {
         position: "fixed",
         top: 0,
@@ -9,7 +10,7 @@ const styles ={
         height: "100%",
         overflow: "hidden",
         zIndex: -1,
-    },
+    } as CSSProperties,
     video: {
         position: "absolute",
         top: 0,
@@ -17,7 +18,7 @@ const styles ={
         width: "100%",
         height: "100%",
         objectFit: "cover",
-    },
+    } as CSSProperties,
 }
 
 export const BackgroundVideo = () => {
