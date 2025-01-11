@@ -1,4 +1,5 @@
 import backgroundVideo from "/moxie_background.mp4";
+import bgImage from "/moxie_background.png";
 import {CSSProperties} from "react";
 
 const styles = {
@@ -10,6 +11,7 @@ const styles = {
         height: "100%",
         overflow: "hidden",
         zIndex: -1,
+        background: `url(${bgImage}) no-repeat center center fixed`,
     } as CSSProperties,
     video: {
         position: "absolute",
@@ -26,7 +28,6 @@ export const BackgroundVideo = () => {
         <div style={styles.videoContainer}>
             <video autoPlay loop muted style={styles.video}>
                 <source src={backgroundVideo} type="video/mp4"/>
-                Your browser does not support the video tag.
             </video>
         </div>
     );
