@@ -15,6 +15,7 @@ const quoteStyles = {
         backdropFilter: "blur(15px) contrast(0.9) brightness(1.1)",
         WebkitBackdropFilter: "blur(15px) contrast(0.9) brightness(1.1)",
         textAlign: "center",
+        zIndex: 10,
     } as CSSProperties,
     text: {
         fontFamily: "'Arial', sans-serif",

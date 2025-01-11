@@ -43,6 +43,14 @@
 
 
 
+.background-video {
+  /*width: auto;*/
+  /*height: auto;*/
+  object-fit: cover;
+  z-index: -1;
+}
+
+
 
 @keyframes slideIn {
   from {
