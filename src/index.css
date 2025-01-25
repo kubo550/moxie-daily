@@ -80,3 +80,26 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
+
+
+.loading {
+  animation: waiting 1.5s infinite;
+}
+
+@keyframes waiting {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+button:active {
+    transform: scale(0.95);
+    outline: none;
+
+}

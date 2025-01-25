@@ -38,7 +38,7 @@ function fixQuote(text = '') {
 
 export const Quote: FC<QuoteProps> = ({text}) => {
     return (
-        <div style={quoteStyles.container} className="slide-in">
+        <div style={quoteStyles.container}>
             <h2 style={quoteStyles.text}>
                 <span style={quoteStyles.quoteMarks}>“</span>
                 {fixQuote(text)}
