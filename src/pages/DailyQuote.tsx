@@ -1,6 +1,6 @@
 import {useParams} from "react-router-dom";
 import {QuoteProviderProps} from "../components/QuoteProvider.tsx";
-import {ButtonsContainer, ShopRef} from "../components/ShopRef.tsx";
+import {ButtonsContainer} from "../components/ShopRef.tsx";
 import {useEffect, useState} from "react";
 import {add, isAfter} from "date-fns";
 import {getQuote} from "../infrastructure/qoutes.ts";
