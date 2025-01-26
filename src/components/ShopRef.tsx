@@ -4,7 +4,7 @@ import {FC, useState} from "react";
 import {Tooltip} from "react-tooltip";
 
 const redirectUrl = 'https://moxieimpact.com/pages/qr-apparel';
-const style = {
+export const buttonStyle = {
     backdropFilter: 'blur(10px)',
     WebkitBackdropFilter: 'blur(10px)',
     textAlign: 'center',
@@ -22,7 +22,7 @@ const style = {
 
 
 const buttonStyles = {
-    ...style,
+    ...buttonStyle,
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
@@ -33,8 +33,8 @@ const buttonStyles = {
 
 export const ShopRef: React.FC = () => {
     return (
-        <a href={redirectUrl} target="_blank" rel="noreferrer" className="shop button" style={style}>
-            <Tooltip anchorSelect=".shop" style={{fontSize: '0.5em'}} place="top">
+        <a href={redirectUrl} target="_blank" rel="noreferrer" className="shop button" style={buttonStyle}>
+            <Tooltip anchorSelect=".shop" style={{fontSize: '0.45em'}} place="top">
                 Shop
             </Tooltip>
             <CiShoppingBasket/>
@@ -53,7 +53,7 @@ export const NextQuoteButton:FC<{ onNextQuote: () => Promise<void> }> = ({onNext
 
     return (
         <button style={buttonStyles} className={loading ? 'loading next' : 'next'} onClick={handleClick}>
-            <Tooltip anchorSelect=".next" style={{fontSize: '0.5em'}} place="top">
+            <Tooltip anchorSelect=".next" style={{fontSize: '0.45em'}} place="top">
                 Next
             </Tooltip>
             <LiaRandomSolid/>
@@ -75,7 +75,7 @@ export const ShareButton = () => {
 
     return (
         <button style={buttonStyles} onClick={onClick} className="share">
-            <Tooltip anchorSelect=".share" style={{fontSize: '0.5em'}} place="top">
+            <Tooltip anchorSelect=".share" style={{fontSize: '0.4em'}} place="top">
                 {tooltipText}
             </Tooltip>
             <CiShare2/>
