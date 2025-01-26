@@ -2,33 +2,10 @@ import {CiShoppingBasket, CiShare2} from "react-icons/ci";
 import { LiaRandomSolid } from "react-icons/lia";
 import {FC, useState} from "react";
 import {Tooltip} from "react-tooltip";
+import {buttonStyle, buttonStyles} from "./styles.ts";
 
 const redirectUrl = 'https://moxieimpact.com/pages/qr-apparel';
-export const buttonStyle = {
-    backdropFilter: 'blur(10px)',
-    WebkitBackdropFilter: 'blur(10px)',
-    textAlign: 'center',
-    textDecoration: 'none',
-    color: 'white',
-    textShadow: "0px 0px 5px rgba(255, 255, 255, 0.3)",
-    backgroundColor: 'rgba(255, 255, 255, 0.1)',
-    borderRadius: '50%',
-    padding: '10px',
-    width: '40px',
-    height: '40px',
-    boxShadow: '0 8px 32px rgba(0, 0, 0, 0.37)',
-    cursor: 'pointer',
-} as const;
 
-
-const buttonStyles = {
-    ...buttonStyle,
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    width: '60px',
-    height: '60px',
-} as const
 
 
 export const ShopRef: React.FC = () => {
@@ -95,8 +72,8 @@ const styles = {
     display: 'flex',
     justifyContent: 'space-around',
     alignItems: 'center',
-
 } as const
+
 type ButtonsContainerProps = { onNextQuote: () => Promise<void> };
 export const ButtonsContainer: FC<ButtonsContainerProps> = ({onNextQuote}) => {
     return (

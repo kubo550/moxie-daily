@@ -2,8 +2,8 @@ import {Fab, Action} from 'react-tiny-fab';
 import {useNavigate, useParams} from "react-router-dom";
 import 'react-tiny-fab/dist/styles.css';
 import {CiCircleMore} from "react-icons/ci";
-import {buttonStyle} from "./ShopRef.tsx";
 import {FaLeaf, FaRunning, FaSmile} from "react-icons/fa";
+import {buttonStyle} from "./styles.ts";
 
 
 const menuOptions = [
