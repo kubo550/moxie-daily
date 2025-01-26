@@ -40,7 +40,8 @@ export const DailyQuote = () => {
     useEffect(() => {
         if (searchParams.has('q')) {
             const id = searchParams.get('q');
-            fetchQuoteById(id);
+            id  ? fetchQuoteById(id) : fetchRandomQuote();
+            return
         }
         const quoteFromLocalStore = loadFromCache(type);
 
