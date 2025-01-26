@@ -44,7 +44,6 @@ export const ShopRef: React.FC = () => {
 
 
 export const NextQuoteButton:FC<{ onNextQuote: () => Promise<void> }> = ({onNextQuote}) => {
-
     const [loading, setLoading] = useState(false);
     const handleClick = async () => {
         setLoading(true);
@@ -64,7 +63,6 @@ export const NextQuoteButton:FC<{ onNextQuote: () => Promise<void> }> = ({onNext
 
 
 export const ShareButton = () => {
-
     const [tooltipText, setTooltipText] = useState('Share');
 
     const onClick = () => {

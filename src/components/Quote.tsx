@@ -10,7 +10,7 @@ const quoteStyles = {
         borderRadius: "15px",
         padding: "20px",
         maxWidth: "600px",
-        margin: "0 auto 6rem",
+        margin: "0 auto 15rem",
         boxShadow: "0 8px 32px rgba(0, 0, 0, 0.37)",
         backdropFilter: "blur(15px) contrast(0.9) brightness(1.1)",
         WebkitBackdropFilter: "blur(15px) contrast(0.9) brightness(1.1)",

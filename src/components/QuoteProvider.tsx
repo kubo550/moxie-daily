@@ -14,10 +14,10 @@ export const QuoteProviderProps: FC<QuoteProviderProps> = ({quote}) => {
             {quote && (
                 <motion.div
                     key={quote}
-                    initial={{ y: -50, opacity: 0, scale: 0.9 }}
-                    animate={{ y: 0, opacity: 1, scale: 1 }}
-                    exit={{ y: 50, opacity: 0, scale: 0.9 }}
-                    transition={{ duration: 0.3 }}
+                    initial={{ y: 450, scale: 0 }}
+                    animate={{ y: 0, scale: 1 }}
+                    exit={{ y: -250, scale: 0 }}
+                    transition={{ duration: 0.5, case: 'linear' }}
                 >
                     <Quote text={quote} />
                 </motion.div>
