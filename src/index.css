@@ -104,3 +104,11 @@ button:focus {
     outline: none;
 }
 
+
+.flex-shrink-0::after {
+  content: "\f1d8";
+  font-family: "Font Awesome 6 Free";
+  font-weight: 600;
+  font-size: .8em;
+  color: white;
+}

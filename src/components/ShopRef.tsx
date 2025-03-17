@@ -10,11 +10,11 @@ const redirectUrl = 'https://moxieimpact.com/pages/qr-apparel';
 
 export const ShopRef: React.FC = () => {
     return (
-        <a href={redirectUrl} target="_blank" rel="noreferrer" className="shop button" style={buttonStyle}>
+        <a href={redirectUrl} target="_blank" rel="noreferrer" className="shop button" style={{...buttonStyle, width: '60px', height: '60px', display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
             <Tooltip anchorSelect=".shop" style={{fontSize: '0.45em'}} place="top">
                 Shop
             </Tooltip>
-            <CiShoppingBasket/>
+            <CiShoppingBasket style={{margin: '-6px'}}/>
         </a>
     );
 }
@@ -65,7 +65,7 @@ const styles = {
     bottom: '28px',
     right: '50%',
     transform: 'translateX(50%)',
-    zIndex: 1000,
+    zIndex: 10,
     fontSize: '2em',
     width: '100%',
     maxWidth: '360px',

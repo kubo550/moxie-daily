@@ -34,8 +34,9 @@ export const FloatingMenu: React.FC<{ fetchRandomQuote: () => void }> = ({fetchR
                 style={{
                     position: 'fixed',
                     bottom: '18%',
-                    right: '6px',
+                    left: '6px',
                     fontSize: '1.5em',
+                    zIndex: 10
                 }}
                 mainButtonStyles={{
                     ...buttonStyle,

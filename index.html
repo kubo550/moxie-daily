@@ -4,9 +4,56 @@
     <meta charset="UTF-8" />
     <link rel="icon" href="/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
     <title>MOXIE daily</title>
+    <style>
+      .w-6 {
+        background: white;
+      }
+
+      .w-6 * {
+        margin-top: -10px;
+      }
+
+      .transition {
+        position: relative;
+        background: transparent;
+        bottom: 18%;
+      }
+
+      .transition div {
+        position: absolute;
+        margin-top: -12px;
+        margin-left: -18px;
+      }
+
+      .fixed {
+        z-index: 100;
+      }
+
+    </style>
   </head>
   <body>
+
+  <div id="talkie-chat"></div>
+  <script type="module" src="https://talkie-prd-chat.s3.eu-central-1.amazonaws.com/talkie-chat.js"></script>
+  <script type="module">
+    window.renderTalkieChat({
+      botId: 'e52abf37-8ca0-4225-9a65-3b15d1c7faf5',
+      apiUrl: "https://chat-api.talkie.ai",
+      customization: {
+        chatTitle: 'Moxie Impact Chat bot',
+        botAvatarSrc: 'https://moxieimpact.com/cdn/shop/files/WhatsApp_Image_2024-05-28_at_11.38.16_PM_160x.jpg?v=1717326879',
+        botName: 'Moxie Daily',
+        userName: 'User',
+        finishedMessage: 'Thank you for the conversation!',
+        fatalErrorMessage: 'An error occurred. Please try again later.',
+        inputPlaceholder: 'Type a message...',
+      }
+    });
+  </script>
+
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
