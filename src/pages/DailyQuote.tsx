@@ -19,7 +19,8 @@ export const DailyQuote = () => {
     const { type = 'affirmation' } = useParams();
     const [searchParams, setSearchParams] = useSearchParams();
     const [quote, setQuote] = useState('');
-    const ref = useRef<HTMLDivElement>(null);
+    const ref = useRef<HTMLDivElement | null>(null);
+
 
     const fetchRandomQuote = useCallback( async ()  => {
         setQuote('')
