@@ -19,7 +19,7 @@ export const DailyQuote = () => {
     const { type = 'affirmation' } = useParams();
     const [searchParams, setSearchParams] = useSearchParams();
     const [quote, setQuote] = useState('');
-    const ref = useRef<HTMLDivElement>(null!);
+    const ref = useRef<HTMLDivElement>(null);
 
     const fetchRandomQuote = useCallback( async ()  => {
         setQuote('')
@@ -34,14 +34,18 @@ export const DailyQuote = () => {
         const q = await getQuoteById(id)
         setQuote(q.quote);
         saveToCache(type, q.quote);
-    }, []);
+    }, [type]);
 
 
     useEffect(() => {
         if (searchParams.has('q')) {
             const id = searchParams.get('q');
-            id  ? fetchQuoteById(id) : fetchRandomQuote();
-            return
+
+            if (id) {
+                fetchQuoteById(id)
+            } else {
+                fetchRandomQuote()
+            }
         }
         const quoteFromLocalStore = loadFromCache(type);
 
