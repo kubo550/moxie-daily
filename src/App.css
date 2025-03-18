@@ -66,3 +66,22 @@
 .slide-in {
   animation: slideIn 0.5s ease-out;
 }
+
+.talkie-chat-iframe {
+  position: absolute;
+  bottom: 100px;
+  right: 0;
+  height: 500px;
+  max-height: 100%;
+  background-color: transparent;
+}
+
+@media screen and (max-width: 990px) {
+  .talkie-chat-iframe {
+    width: min-content;
+    height: min-content;
+    bottom: 0;
+    right: 0;
+    z-index: 100;
+  }
+}

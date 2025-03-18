@@ -50,12 +50,13 @@ export const FloatingMenu: React.FC<{ fetchRandomQuote: () => void }> = ({fetchR
                 {menuOptions.map(option => (
                     <Action
                         key={option.path}
-                        style={{...buttonStyle}}
+                        style={buttonStyle}
                         text={option.text}
                         onClick={() => {
                             if (option.path === `/${type}`) {
                                 return fetchRandomQuote();
                             }
+
                             return navigate(option.path);
                         }}
                     >
