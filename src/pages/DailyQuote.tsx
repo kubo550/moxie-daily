@@ -5,6 +5,8 @@ import {useCallback, useEffect, useRef, useState} from "react";
 import {add, isAfter} from "date-fns";
 import {getQuoteById, getRandomQuote} from "../infrastructure/qoutes.ts";
 import {FloatingMenu} from "../components/FloatingMenu.tsx";
+import {Button} from "@/components/ui/button.tsx";
+import QuotesModal from "@/components/QuotesModal.tsx";
 
 function loadFromCache(quoteType: string) {
     return JSON.parse(localStorage.getItem(`quote:${quoteType}`) || '{}');
@@ -21,6 +23,11 @@ export const DailyQuote = () => {
     const [quote, setQuote] = useState('');
     const ref = useRef<HTMLDivElement | null>(null);
 
+    const [quotesModalOpen, setQuotesModalOpen] = useState(false)
+
+    useEffect(() => {
+        () => getAvailableTypes()
+    }, []);
 
     const fetchRandomQuote = useCallback( async ()  => {
         setQuote('')
@@ -62,7 +69,9 @@ export const DailyQuote = () => {
         <div ref={ref}>
             <QuoteProviderProps quote={quote} />
 
-            <FloatingMenu fetchRandomQuote={fetchRandomQuote} />
+            <Button onClick={() => setQuotesModalOpen(true)}>Hello</Button>
+
+            <QuotesModal open={quotesModalOpen} onOpenChange={setQuotesModalOpen} />
 
             <ButtonsContainer onNextQuote={fetchRandomQuote} />
         </div>
