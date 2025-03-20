@@ -9,10 +9,18 @@ type QuotesModalModalProps = DialogProps
 export default function QuotesModal({open, onOpenChange, children}: QuotesModalModalProps) {
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="sm:max-w-[425px]">
+      <DialogContent className="max-w-[90%] max-h-full overflow-y-auto bg-white/10 rounded-[15px] p-[20px] shadow-[0_8px_32px_rgba(0,0,0,0.37)] backdrop-blur-[15px] backdrop-contrast-90 backdrop-brightness-110 border-0 md:max-w-[800px] md:min-h-[500px]">
         {children}
       </DialogContent>
     </Dialog>
   )
 }
 
+
+
+
+// background: "rgba(255, 255, 255, 0.1)",
+//   borderRadius: "15px",
+//   padding: "20px",
+//   boxShadow: "0 8px 32px rgba(0, 0, 0, 0.37)",
+//   backdropFilter: "blur(15px) contrast(0.9) brightness(1.1)",

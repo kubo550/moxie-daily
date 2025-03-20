@@ -47,11 +47,12 @@ function DialogOverlay({
 function DialogContent({
   className,
   children,
+  showOverlay = false,
   ...props
-}: React.ComponentProps<typeof DialogPrimitive.Content>) {
+}: (React.ComponentProps<typeof DialogPrimitive.Content> & { showOverlay?: boolean })) {
   return (
     <DialogPortal data-slot="dialog-portal">
-      <DialogOverlay />
+      {showOverlay && <DialogOverlay/>}
       <DialogPrimitive.Content
         data-slot="dialog-content"
         className={cn(
