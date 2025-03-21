@@ -5,7 +5,7 @@ import {useCallback, useRef, useState, useLayoutEffect} from "react";
 import {getAvailableTypes, getQuoteById, getQuotesByType, Quote} from "../infrastructure/qoutes.ts";
 import {Button} from "@/components/ui/button.tsx";
 import QuotesModal from "@/components/QuotesModal.tsx";
-import {QuoteType} from "@/types/QouteType.ts";
+import {QuoteType} from "@/types/QuoteType.ts";
 import {getQuoteTypeName} from "@/utils/quotes.ts";
 import {getFromLocalStorage, setToLocalStorage} from "@/utils/localStorage.ts";
 import {randomElement} from "@/utils/functions.ts";
@@ -15,17 +15,17 @@ const quoteTypesNameLocalStorageKey = "quoteTypes"
 export const DailyQuote = () => {
     const [searchParams, setSearchParams] = useSearchParams();
 
-    const [quote, setQuote] = useState<Quote['quote']>('');
+    const [quoteText, setQuoteText] = useState<Quote['quote']>('');
     const [quotes, setQuotes] = useState<Quote[]>([]);
     const [quotesModalOpen, setQuotesModalOpen] = useState(false)
     const [selectedTypes, setSelectedTypes] = useState<QuoteType[]>(getFromLocalStorage<QuoteType[]>(quoteTypesNameLocalStorageKey) || []);
     const availableTypes = getAvailableTypes();
 
-    const fetchQuoteById = useCallback(async (id: string) => {
-        const q = await getQuoteById(id)
+    const fetchQuoteById = async (id: string) => {
+        const quote = await getQuoteById(id)
 
-        setQuote(q.quote || 'test');
-    }, []);
+        setQuoteText(quote.quote || 'Remember to share your quote with others!');
+    };
 
     useLayoutEffect(() => {
         (async () => {
@@ -42,7 +42,7 @@ export const DailyQuote = () => {
                 getRandomQuote(quotesArr)
             }
         })();
-    }, [selectedTypes]);
+    }, [selectedTypes, searchParams]);
 
     const ref = useRef<HTMLDivElement | null>(null);
 
@@ -65,14 +65,14 @@ export const DailyQuote = () => {
 
     const getRandomQuote = useCallback((quotesArr: Quote[]) => {
         const randomQuote = randomElement(quotesArr);
-        setQuote(randomQuote.quote  || 'test2')
+        setQuoteText(randomQuote.quote  || 'Remember to share your quote with others!');
 
-        setSearchParams({q: randomQuote?.id})
+        setSearchParams({q: randomQuote?.id || ''})
     }, [setSearchParams])
 
     return (
         <div ref={ref}>
-            <QuoteProviderProps quote={quote} />
+            <QuoteProviderProps quote={quoteText} />
 
             <Button onClick={() => setQuotesModalOpen(true)}>Hello</Button>
 
