@@ -16,12 +16,6 @@ export const getRandomQuote = async (type: string): Promise<Quote> => {
     }
 }
 
-function handleSaveQoutesToCache(quotes: Quote[]) {
-    if (quotes.length) {
-        console.log('Adding quotes to cache: ', {count: quotes.length});
-        CacheProvider.getInstance().addMultipleQuotes(quotes);
-    }
-}
 
 export const getQuoteById = async (id: string): Promise<Quote> => {
     try {
@@ -32,7 +26,6 @@ export const getQuoteById = async (id: string): Promise<Quote> => {
         }
         console.log('Fetching quote from DB: ', {id});
         const quotes = await QuoteDBProvider.getInstance().fetchQuotesFromDB();
-        handleSaveQoutesToCache(quotes);
 
         return quotes.find(quote => quote.id === id) || randomElement(fallbackQuotes);
     } catch (error) {
@@ -43,9 +36,11 @@ export const getQuoteById = async (id: string): Promise<Quote> => {
 
 export const getQuotesByType = async (types: QuoteType[] = []): Promise<Quote[]> => {
     try {
-        const quotes = await QuoteDBProvider.getInstance().fetchQuotesFromDB();
-        handleSaveQoutesToCache(quotes);
+        let quotes = CacheProvider.getInstance().getAllQuotes();
 
+        if (!quotes.length) {
+            quotes = await QuoteDBProvider.getInstance().fetchQuotesFromDB();
+        }
         if (!types.length) {
             return quotes;
         }

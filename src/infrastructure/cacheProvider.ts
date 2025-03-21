@@ -23,4 +23,7 @@ export class CacheProvider {
         quotes.forEach(quote => this.addQuote(quote));
     }
 
+    public getAllQuotes() {
+        return Array.from(this.quotes.values());
+    }
 }
