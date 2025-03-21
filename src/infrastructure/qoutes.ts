@@ -1,20 +1,13 @@
-import {db} from "./firebase.ts";
-import {collection, getDocs} from "firebase/firestore";
 import {randomElement} from "../utils/functions.ts";
-import {QuoteType} from "@/types/QouteType.ts";
+import {QuoteType} from "@/types/QuoteType.ts";
+import {CacheProvider} from "@/infrastructure/cacheProvider.ts";
+import {QuoteDBProvider} from "@/infrastructure/quoteDBProvider.ts";
 
-const QUOTES_COLLECTION_NAME = 'quotes';
-
-export type Quote = { type: QuoteType, quote: string, id: string };
-
-async function fetchQuotesFromDB() {
-    const querySnapshot = await getDocs(collection(db, QUOTES_COLLECTION_NAME));
-    return querySnapshot.docs.map(doc => doc.data()) as Quote[];
-}
+export type Quote = { type: QuoteType, quote: string, id: string, caption?: string };
 
 export const getRandomQuote = async (type: string): Promise<Quote> => {
     try {
-        const quotes = await fetchQuotesFromDB();
+        const quotes = await QuoteDBProvider.getInstance().fetchQuotesFromDB();
         const currentTypeQuotes = quotes.filter(quote => quote.type === type);
         return randomElement(currentTypeQuotes) || randomElement(quotes);
     } catch (error) {
@@ -23,22 +16,31 @@ export const getRandomQuote = async (type: string): Promise<Quote> => {
     }
 }
 
+
 export const getQuoteById = async (id: string): Promise<Quote> => {
     try {
-        const querySnapshot = await getDocs(collection(db, QUOTES_COLLECTION_NAME));
-        const quotes = querySnapshot.docs.map(doc => doc.data()) as Quote[];
+        const cachedQuote = CacheProvider.getInstance().getQuote(id);
+        if (cachedQuote) {
+            console.log('Quote found in cache: ', {id});
+            return cachedQuote;
+        }
+        console.log('Fetching quote from DB: ', {id});
+        const quotes = await QuoteDBProvider.getInstance().fetchQuotesFromDB();
 
         return quotes.find(quote => quote.id === id) || randomElement(fallbackQuotes);
     } catch (error) {
-        console.log('Error getting quote:', error as unknown);
+        console.log('Error getting quote: ', error as unknown);
         return randomElement(fallbackQuotes);
     }
 }
 
 export const getQuotesByType = async (types: QuoteType[] = []): Promise<Quote[]> => {
     try {
-        const quotes = await fetchQuotesFromDB();
+        let quotes = CacheProvider.getInstance().getAllQuotes();
 
+        if (!quotes.length) {
+            quotes = await QuoteDBProvider.getInstance().fetchQuotesFromDB();
+        }
         if (!types.length) {
             return quotes;
         }

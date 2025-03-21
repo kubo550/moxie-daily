@@ -1,4 +1,4 @@
-import {QuoteType} from "@/types/QouteType.ts";
+import {QuoteType} from "@/types/QuoteType.ts";
 
 export const getQuoteTypeName = (type: QuoteType) => {
   switch (type) {
