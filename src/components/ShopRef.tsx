@@ -20,11 +20,11 @@ export const ShopRef: React.FC = () => {
 }
 
 
-export const NextQuoteButton:FC<{ onNextQuote: () => Promise<void> }> = ({onNextQuote}) => {
+export const NextQuoteButton:FC<{ onNextQuote: () => void }> = ({onNextQuote}) => {
     const [loading, setLoading] = useState(false);
     const handleClick = async () => {
         setLoading(true);
-        await onNextQuote();
+        onNextQuote();
         setLoading(false);
     }
 
@@ -74,7 +74,7 @@ const styles = {
     alignItems: 'center',
 } as const
 
-type ButtonsContainerProps = { onNextQuote: () => Promise<void> };
+type ButtonsContainerProps = { onNextQuote: () => void };
 export const ButtonsContainer: FC<ButtonsContainerProps> = ({onNextQuote}) => {
     return (
         <div style={styles}>

@@ -5,7 +5,7 @@ import {QuoteType} from "@/types/QouteType.ts";
 
 const QUOTES_COLLECTION_NAME = 'quotes';
 
-type Quote = { type: QuoteType, quote: string, id: string };
+export type Quote = { type: QuoteType, quote: string, id: string };
 
 async function fetchQuotesFromDB() {
     const querySnapshot = await getDocs(collection(db, QUOTES_COLLECTION_NAME));
@@ -27,6 +27,7 @@ export const getQuoteById = async (id: string): Promise<Quote> => {
     try {
         const querySnapshot = await getDocs(collection(db, QUOTES_COLLECTION_NAME));
         const quotes = querySnapshot.docs.map(doc => doc.data()) as Quote[];
+
         return quotes.find(quote => quote.id === id) || randomElement(fallbackQuotes);
     } catch (error) {
         console.log('Error getting quote:', error as unknown);
@@ -37,6 +38,11 @@ export const getQuoteById = async (id: string): Promise<Quote> => {
 export const getQuotesByType = async (types: QuoteType[] = []): Promise<Quote[]> => {
     try {
         const quotes = await fetchQuotesFromDB();
+
+        if (!types.length) {
+            return quotes;
+        }
+
         return quotes.filter(quote => types.includes(quote.type));
     } catch (error) {
         console.log('Error getting quote:', error as unknown);
