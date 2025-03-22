@@ -9,6 +9,8 @@ import {QuoteType} from "@/types/QuoteType.ts";
 import {getQuoteTypeName} from "@/utils/quotes.ts";
 import {getFromLocalStorage, setToLocalStorage} from "@/utils/localStorage.ts";
 import {randomElement} from "@/utils/functions.ts";
+import * as React from "react";
+import {QuotesModalContent} from "@/components/QuotesModalContent.tsx";
 
 const quoteTypesNameLocalStorageKey = "quoteTypes"
 
@@ -19,7 +21,6 @@ export const DailyQuote = () => {
     const [quotes, setQuotes] = useState<Quote[]>([]);
     const [quotesModalOpen, setQuotesModalOpen] = useState(false)
     const [selectedTypes, setSelectedTypes] = useState<QuoteType[]>(getFromLocalStorage<QuoteType[]>(quoteTypesNameLocalStorageKey) || []);
-    const availableTypes = getAvailableTypes();
 
     const fetchQuoteById = async (id: string) => {
         const quote = await getQuoteById(id)
@@ -72,25 +73,15 @@ export const DailyQuote = () => {
 
     return (
         <div ref={ref}>
-            <QuoteProviderProps quote={currentQuote} caption  />
+            <QuoteProviderProps quote={currentQuote} caption/>
 
             <Button onClick={() => setQuotesModalOpen(true)}> Choose quote types </Button>
 
             <QuotesModal open={quotesModalOpen} onOpenChange={setQuotesModalOpen}>
-                <div className='grid gap-4 grid-cols-[repeat(auto-fill,minmax(100px,1fr))] md:grid-cols-[repeat(4,minmax(100px,1fr))]'>
-                    {availableTypes.map(type => {
-                        const isSelected = selectedTypes.find(selectedType => selectedType === type)
-
-                        return (
-                            <Button key={type} variant={isSelected ? 'secondary' : 'ghost'} onClick={() => isSelected ? handleQuoteTypeRemove(type) : handleQuoteTypeSelect(type)}>
-                                {getQuoteTypeName(type)}
-                            </Button>
-                        )
-                    })}
-                </div>
+                <QuotesModalContent handleQuoteTypeRemove={handleQuoteTypeRemove} handleQuoteTypeSelect={handleQuoteTypeSelect} selectedTypes={selectedTypes} />
             </QuotesModal>
 
-            <ButtonsContainer onNextQuote={() => getRandomQuote(quotes)} />
+            <ButtonsContainer onNextQuote={() => getRandomQuote(quotes)}/>
         </div>
     );
 }
