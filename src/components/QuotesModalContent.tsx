@@ -1,5 +1,4 @@
 import * as React from "react";
-import {backgroundImages} from "@/types/typesBacgroundImages.ts";
 import {getQuoteTypeName} from "@/utils/quotes.ts";
 import {getAvailableTypes} from "@/infrastructure/qoutes.ts";
 import {QuoteType} from "@/types/QuoteType.ts";
@@ -29,7 +28,7 @@ export const QuotesModalContent: React.FC<QuotesModalContentProps> =  ({
                     className={`relative cursor-pointer rounded-lg overflow-hidden transition-transform duration-200 ${isSelected ? 'scale-95 ring-4 ring-indigo-600' : 'scale-100'}`}
                 >
                     <img
-                        src={backgroundImages[type]}
+                        src={`https://github.com/kubo550/moxie-daily/blob/main/public/types/${type}.jpg?raw=true`}
                         alt={type}
                         className="w-full h-48 object-cover brightness-75 contrast-110"
                     />
