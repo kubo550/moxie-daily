@@ -2,14 +2,15 @@ import * as React from "react";
 import {backgroundImages} from "@/types/typesBacgroundImages.ts";
 import {getQuoteTypeName} from "@/utils/quotes.ts";
 import {getAvailableTypes} from "@/infrastructure/qoutes.ts";
+import {QuoteType} from "@/types/QuoteType.ts";
 
 const availableTypes = getAvailableTypes();
 
 
 interface QuotesModalContentProps {
     selectedTypes: string[];
-    handleQuoteTypeSelect: (type: string) => void;
-    handleQuoteTypeRemove: (type: string) => void;
+    handleQuoteTypeSelect: (type: QuoteType) => void;
+    handleQuoteTypeRemove: (type: QuoteType) => void;
 }
 export const QuotesModalContent: React.FC<QuotesModalContentProps> =  ({
     selectedTypes,

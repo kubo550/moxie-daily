@@ -8,7 +8,6 @@ import QuotesModal from "@/components/QuotesModal.tsx";
 import {QuoteType} from "@/types/QuoteType.ts";
 import {getFromLocalStorage, setToLocalStorage} from "@/utils/localStorage.ts";
 import {randomElement} from "@/utils/functions.ts";
-import * as React from "react";
 import {QuotesModalContent} from "@/components/QuotesModalContent.tsx";
 
 const quoteTypesNameLocalStorageKey = "quoteTypes"
@@ -16,7 +15,7 @@ const quoteTypesNameLocalStorageKey = "quoteTypes"
 export const DailyQuote = () => {
     const [searchParams, setSearchParams] = useSearchParams();
 
-    const [currentQuote, setCurrentQuote] = useState<Quote>(null);
+    const [currentQuote, setCurrentQuote] = useState<Quote | null>(null);
     const [quotes, setQuotes] = useState<Quote[]>([]);
     const [quotesModalOpen, setQuotesModalOpen] = useState(false)
     const [selectedTypes, setSelectedTypes] = useState<QuoteType[]>(getFromLocalStorage<QuoteType[]>(quoteTypesNameLocalStorageKey) || []);
@@ -72,7 +71,7 @@ export const DailyQuote = () => {
 
     return (
         <div ref={ref}>
-            <QuoteProviderProps quote={currentQuote} caption/>
+            <QuoteProviderProps quote={currentQuote} />
 
             <Button onClick={() => setQuotesModalOpen(true)}> Choose quote types </Button>
 
