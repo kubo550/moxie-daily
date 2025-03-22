@@ -2,6 +2,7 @@ import {CSSProperties, FC} from "react";
 
 interface QuoteProps {
     text: string
+    caption?: string
 }
 
 const quoteStyles = {
@@ -36,13 +37,15 @@ function fixQuote(text = '') {
     return text.replace(/"/g, '');
 }
 
-export const Quote: FC<QuoteProps> = ({text}) => {
+export const Quote: FC<QuoteProps> = ({text, caption}) => {
     return (
         <div style={quoteStyles.container}>
             <h2 style={quoteStyles.text}>
                 <span style={quoteStyles.quoteMarks}>“</span>
                 {fixQuote(text)}
                 <span style={quoteStyles.quoteMarks}>“</span>
+
+                {caption && <p className="text-sm text-gray-300 mt-2 ml-25 italic font-light">{caption}</p>}
             </h2>
         </div>
     );

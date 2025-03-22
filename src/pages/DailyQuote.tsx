@@ -1,69 +1,88 @@
-import {useParams, useSearchParams} from "react-router-dom";
+import {useSearchParams} from "react-router-dom";
 import {QuoteProviderProps} from "../components/QuoteProvider.tsx";
 import {ButtonsContainer} from "../components/ShopRef.tsx";
-import {useCallback, useEffect, useRef, useState} from "react";
-import {add, isAfter} from "date-fns";
-import {getQuoteById, getRandomQuote} from "../infrastructure/qoutes.ts";
-import {FloatingMenu} from "../components/FloatingMenu.tsx";
+import {useCallback, useLayoutEffect, useRef, useState} from "react";
+import { getQuoteById, getQuotesByType, Quote} from "../infrastructure/qoutes.ts";
+import {Button} from "@/components/ui/button.tsx";
+import QuotesModal from "@/components/QuotesModal.tsx";
+import {QuoteType} from "@/types/QuoteType.ts";
+import {getFromLocalStorage, setToLocalStorage} from "@/utils/localStorage.ts";
+import {randomElement} from "@/utils/functions.ts";
+import * as React from "react";
+import {QuotesModalContent} from "@/components/QuotesModalContent.tsx";
 
-function loadFromCache(quoteType: string) {
-    return JSON.parse(localStorage.getItem(`quote:${quoteType}`) || '{}');
-}
-
-function saveToCache(quoteType: string, quote: unknown) {
-    const expirationDate = add(new Date(), {days: 1});
-    localStorage.setItem(`quote:${quoteType}`, JSON.stringify({quote, expirationDate}));
-}
+const quoteTypesNameLocalStorageKey = "quoteTypes"
 
 export const DailyQuote = () => {
-    const { type = 'affirmation' } = useParams();
     const [searchParams, setSearchParams] = useSearchParams();
-    const [quote, setQuote] = useState('');
-    const ref = useRef<HTMLDivElement>(null);
 
-    const fetchRandomQuote = useCallback( async ()  => {
-        setQuote('')
-        const q = await getRandomQuote(type)
-        setSearchParams({q: q.id})
-        setQuote(q.quote);
-        saveToCache(type, q.quote);
-    }, [type, setSearchParams]);
+    const [currentQuote, setCurrentQuote] = useState<Quote>(null);
+    const [quotes, setQuotes] = useState<Quote[]>([]);
+    const [quotesModalOpen, setQuotesModalOpen] = useState(false)
+    const [selectedTypes, setSelectedTypes] = useState<QuoteType[]>(getFromLocalStorage<QuoteType[]>(quoteTypesNameLocalStorageKey) || []);
 
-    const fetchQuoteById = useCallback(async (id: string) => {
-        setQuote('')
-        const q = await getQuoteById(id)
-        setQuote(q.quote);
-        saveToCache(type, q.quote);
-    }, [type]);
+    const fetchQuoteById = async (id: string) => {
+        const quote = await getQuoteById(id)
 
+        setCurrentQuote(quote || fallbackQuote);
+    };
 
-    useEffect(() => {
-        if (searchParams.has('q')) {
-            const id = searchParams.get('q');
+    useLayoutEffect(() => {
+        (async () => {
+            const quotesArr = await getQuotesByType(selectedTypes);
+            setQuotes(quotesArr)
 
-            if (id) {
-                fetchQuoteById(id)
+            if (searchParams.has('q')) {
+                const id = searchParams.get('q');
+
+                if (id) {
+                    await fetchQuoteById(id)
+                }
             } else {
-                fetchRandomQuote()
+                getRandomQuote(quotesArr)
             }
-        }
-        const quoteFromLocalStore = loadFromCache(type);
+        })();
+    }, [selectedTypes, searchParams]);
 
-        if (quoteFromLocalStore && isAfter(new Date(quoteFromLocalStore.expirationDate), new Date())) {
-            setQuote(quoteFromLocalStore.quote);
-        } else {
-            fetchRandomQuote();
-        }
-    }, [type, fetchRandomQuote, fetchQuoteById, searchParams]);
+    const ref = useRef<HTMLDivElement | null>(null);
 
+    const handleQuoteTypeSelect = useCallback((type: QuoteType) => {
+        const prevSavedQuoteTypes = getFromLocalStorage<QuoteType[]>(quoteTypesNameLocalStorageKey) || []
+        const filteredQuoteTypes = prevSavedQuoteTypes.filter((quoteType) => quoteType !== type)
+        const newFilteredQuoteTypes = [...filteredQuoteTypes, type]
+
+        setToLocalStorage(quoteTypesNameLocalStorageKey, newFilteredQuoteTypes)
+        setSelectedTypes(newFilteredQuoteTypes)
+    }, [])
+
+    const handleQuoteTypeRemove = useCallback((type: QuoteType) => {
+        const prevSavedQuoteTypes = getFromLocalStorage<QuoteType[]>(quoteTypesNameLocalStorageKey) || []
+        const filteredQuoteTypes = prevSavedQuoteTypes.filter((quoteType) => quoteType !== type)
+
+        setToLocalStorage(quoteTypesNameLocalStorageKey, filteredQuoteTypes)
+        setSelectedTypes(filteredQuoteTypes)
+    }, [])
+
+    const getRandomQuote = useCallback((quotesArr: Quote[]) => {
+        const randomQuote = randomElement(quotesArr);
+        setCurrentQuote(randomQuote || fallbackQuote);
+
+        setSearchParams({q: randomQuote?.id || ''})
+    }, [setSearchParams])
 
     return (
         <div ref={ref}>
-            <QuoteProviderProps quote={quote} />
+            <QuoteProviderProps quote={currentQuote} caption/>
 
-            <FloatingMenu fetchRandomQuote={fetchRandomQuote} />
+            <Button onClick={() => setQuotesModalOpen(true)}> Choose quote types </Button>
 
-            <ButtonsContainer onNextQuote={fetchRandomQuote} />
+            <QuotesModal open={quotesModalOpen} onOpenChange={setQuotesModalOpen}>
+                <QuotesModalContent handleQuoteTypeRemove={handleQuoteTypeRemove} handleQuoteTypeSelect={handleQuoteTypeSelect} selectedTypes={selectedTypes} />
+            </QuotesModal>
+
+            <ButtonsContainer onNextQuote={() => getRandomQuote(quotes)}/>
         </div>
     );
 }
+
+const fallbackQuote: Quote = {id: '2137', type: QuoteType.affirmation, quote: 'Remember to share your quote with others!'};

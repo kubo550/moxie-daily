@@ -1,5 +1,5 @@
-import backgroundVideo from "/moxie_background.mp4";
-import bgImage from "/moxie_background.png";
+import backgroundVideo from "/smoke_background.mp4";
+import bgImage from "/smoke_background.png";
 import {CSSProperties} from "react";
 
 const styles = {
