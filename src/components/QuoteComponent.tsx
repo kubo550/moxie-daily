@@ -37,7 +37,7 @@ function fixQuote(text = '') {
     return text.replace(/"/g, '');
 }
 
-export const Quote: FC<QuoteProps> = ({text, caption}) => {
+export const QuoteComponent: FC<QuoteProps> = ({text, caption}) => {
     return (
         <div style={quoteStyles.container}>
             <h2 style={quoteStyles.text}>
