@@ -11,3 +11,6 @@ Web app to help you keep track of your daily quotes and thoughts.
 - Run `npm install` to install dependencies
 - Run `npm run dev` to start the development server
 
+Moxie shop [here](https://moxieimpact.com/)
+
+Moxie QR page [here](https://my.moxieimpact.com/)
