@@ -20,7 +20,7 @@
       window.addEventListener("message", (event) => {
           const iframe = document.querySelector("#talkie-chat-iframe");
 
-        console.log(event, 'event')
+        console.log(event.data.isChatOpened, 'event.data.isChatOpened')
 
           if (iframe) {
             if (event.data.isChatOpened === false) {
@@ -100,6 +100,7 @@
 
                     if (openButton) {
                       openButton.addEventListener('click', async () => {
+                        shouldQueryCloseButton = true;
                         window.parent.postMessage({ isChatOpened: true, width: 300, height: 600, mobileWidth: '100%', mobileHeight: '100%' }, "*");
 
                         while (shouldQueryCloseButton) {
