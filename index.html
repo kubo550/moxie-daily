@@ -19,15 +19,22 @@
     <script type="module">
       window.addEventListener("message", (event) => {
           const iframe = document.querySelector("#talkie-chat-iframe");
-
-        console.log(event.data.isChatOpened, 'event.data.isChatOpened')
+          const buttons = document.querySelectorAll('button');
 
           if (iframe) {
             if (event.data.isChatOpened === false) {
               iframe.style.width = `${event.data.width}px`;
               iframe.style.height = `${event.data.height}px`;
               iframe.style.bottom = "120px";
+              iframe.style.borderRadius = "50%";
+                buttons.forEach((button) => {
+                    button.style.margin = "10px";
+                });
             } else if (event.data.isChatOpened === true) {
+              iframe.style.borderRadius = "0";
+              buttons.forEach((button) => {
+                button.style.margin = "-22px -12px -10px 0 !important";
+              });
               if (window.innerWidth <= 990) {
                 iframe.style.width = event.data.mobileWidth;
                 iframe.style.height = event.data.mobileHeight;
@@ -86,7 +93,7 @@
                     setTimeout(() => {
                         closeButton = document.querySelector('button.w-6.h-6');
                         closeButton.addEventListener('click', () => {
-                          window.parent.postMessage({ isChatOpened: false, width: 86, height: 86 }, "*");
+                          window.parent.postMessage({ isChatOpened: false, width: 50, height: 50 }, "*");
 
                           shouldQueryCloseButton = false;
                         })
@@ -127,12 +134,22 @@
 
           @media screen and (max-width: 990px) {
             #talkie-chat:not(:has(div.w-full.max-w-full)) div.fixed.bottom-0.right-0.flex {
-                width: 86px !important;
-                height: 86px !important;
+                width: 50px !important;
+                height: 50px !important;
+
             }
 
-            button.rounded-full.shadow-lg {
-              /*margin: 0 !important;*/
+            #talkie-chat(:has(div.w-full.max-w-full)) {
+                width: 100% !important;
+                height: 100% !important;
+               }
+
+            #talkie-chat > div > div {
+                margin-bottom: -54px !important;
+            }
+
+            button.rounded-full.shadow-lg.transition {
+              margin: -22px -12px -10px 0 !important;
             }
           }
         <\/style>
