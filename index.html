@@ -20,8 +20,6 @@
       window.addEventListener("message", (event) => {
           const iframe = document.querySelector("#talkie-chat-iframe");
 
-        console.log(event.data.isChatOpened, 'event.data.isChatOpened')
-
           if (iframe) {
             if (event.data.isChatOpened === false) {
               iframe.style.width = `${event.data.width}px`;
