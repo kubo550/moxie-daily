@@ -2,12 +2,14 @@ import './App.css';
 import {BrowserRouter as Router, Route, Routes} from "react-router-dom";
 import {DailyQuote} from "./pages/DailyQuote.tsx";
 import {BackgroundVideo} from "./components/BackgroundVideo.tsx";
+import {Logo} from "./components/Logo.tsx";
 
 
 
 const App = () => {
     return (
         <>
+            <Logo />
             <BackgroundVideo />
             <Router>
                 <Routes>
