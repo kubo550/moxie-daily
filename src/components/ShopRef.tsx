@@ -2,7 +2,7 @@ import {CiShoppingBasket, CiShare2} from "react-icons/ci";
 import { LiaRandomSolid } from "react-icons/lia";
 import {FC, useState} from "react";
 import {Tooltip} from "react-tooltip";
-import {buttonStyle, buttonStyles} from "./styles.ts";
+import {buttonStyle, buttonStyles, COLORS} from "./styles.ts";
 
 const redirectUrl = 'https://moxieimpact.com/pages/qr-apparel';
 
@@ -14,7 +14,7 @@ export const ShopRef: React.FC = () => {
             <Tooltip anchorSelect=".shop" style={{fontSize: '0.45em'}} place="top">
                 Shop
             </Tooltip>
-            <CiShoppingBasket style={{margin: '-6px'}}/>
+            <CiShoppingBasket style={{margin: '-6px', color: COLORS.primary}}/>
         </a>
     );
 }
@@ -33,7 +33,7 @@ export const NextQuoteButton:FC<{ onNextQuote: () => void }> = ({onNextQuote}) =
             <Tooltip anchorSelect=".next" style={{fontSize: '0.45em'}} place="top">
                 Next
             </Tooltip>
-            <LiaRandomSolid/>
+            <LiaRandomSolid style={{color: COLORS.primary}}/>
         </button>
     );
 }
@@ -55,7 +55,7 @@ export const ShareButton = () => {
             <Tooltip anchorSelect=".share" style={{fontSize: '0.4em'}} place="top">
                 {tooltipText}
             </Tooltip>
-            <CiShare2/>
+            <CiShare2 style={{color: COLORS.primary}}/>
         </button>
     )
 }

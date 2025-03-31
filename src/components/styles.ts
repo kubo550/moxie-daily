@@ -23,3 +23,8 @@ export const buttonStyles = {
     width: '60px',
     height: '60px',
 } as const
+
+
+export const COLORS = {
+    primary: '#F7B900',
+}
