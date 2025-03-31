@@ -14,7 +14,6 @@ const quoteTypesNameLocalStorageKey = "quoteTypes"
 
 export const DailyQuote = () => {
     const [searchParams, setSearchParams] = useSearchParams();
-
     const [currentQuote, setCurrentQuote] = useState<Quote | null>(null);
     const [quotes, setQuotes] = useState<Quote[]>([]);
     const [quotesModalOpen, setQuotesModalOpen] = useState(false)
@@ -73,7 +72,7 @@ export const DailyQuote = () => {
         <div ref={ref}>
             <QuoteProviderProps quote={currentQuote} />
 
-            <Button onClick={() => setQuotesModalOpen(true)}> Choose quote types </Button>
+            <Button onClick={() => setQuotesModalOpen(true)} className='capitalize'> Select your inspiration </Button>
 
             <QuotesModal open={quotesModalOpen} onOpenChange={setQuotesModalOpen}>
                 <QuotesModalContent handleQuoteTypeRemove={handleQuoteTypeRemove} handleQuoteTypeSelect={handleQuoteTypeSelect} selectedTypes={selectedTypes} />
