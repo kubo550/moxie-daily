@@ -7,19 +7,21 @@ const styles = {
         top: "10px",
         left: "10px",
         width: "9vw",
-        maxWidth: "100px",
-        minWidth: "50px",
+        maxWidth: "120px",
+        minWidth: "100px",
     } as CSSProperties,
 
     logo: {
         width: "100%",
         height: "auto",
-        borderRadius: "50%",
+        borderRadius: "30%",
     } as CSSProperties,
 };
 
 export const Logo = () => (
     <div style={styles.logoContainer}>
-        <img src={logo} alt="Company Logo" style={styles.logo} />
+        <a href="https://moxieimpact.com/pages/qr-apparel" target='_blank' rel='noreferrer'>
+            <img src={logo} alt="Company Logo" style={styles.logo} />
+        </a>
     </div>
 );
