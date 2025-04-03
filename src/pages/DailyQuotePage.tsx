@@ -12,7 +12,7 @@ import {QuotesModalContent} from "@/components/QuotesModalContent.tsx";
 
 const quoteTypesNameLocalStorageKey = "quoteTypes"
 
-export const DailyQuote = () => {
+export const DailyQuotePage = () => {
     const [searchParams, setSearchParams] = useSearchParams();
     const [currentQuote, setCurrentQuote] = useState<Quote | null>(null);
     const [quotes, setQuotes] = useState<Quote[]>([]);
