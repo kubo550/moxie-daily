@@ -72,7 +72,7 @@ export const DailyQuote = () => {
         <div ref={ref}>
             <QuoteProviderProps quote={currentQuote} />
 
-            <Button onClick={() => setQuotesModalOpen(true)} className='capitalize'> Select your inspiration </Button>
+            <Button onClick={() => setQuotesModalOpen(true)} className='capitalize absolute bottom-[160px]'> Select your inspiration </Button>
 
             <QuotesModal open={quotesModalOpen} onOpenChange={setQuotesModalOpen}>
                 <QuotesModalContent handleQuoteTypeRemove={handleQuoteTypeRemove} handleQuoteTypeSelect={handleQuoteTypeSelect} selectedTypes={selectedTypes} />
