@@ -2,6 +2,7 @@ import {Link} from 'react-router-dom';
 import {QuoteType} from "@/types/QuoteType.ts";
 import {getQuoteTypeName} from "@/utils/quotes.ts";
 import { getBackgroundImage} from "@/types/typesBacgroundImages.ts";
+import {COLORS} from "@/components/styles.ts";
 
 type Coach = {
     id: string;
@@ -36,12 +37,12 @@ const coaches: Coach[] = [
 export const ChatList = () => {
     return (
         <div className="text-white p-6 max-w-xl rounded-[15px]">
-            <h1 className="text-2xl font-bold mb-6 text-left py-4" color={"#222"}>Moxie Coach</h1>
+            <h1 className="text-2xl font-bold mb-6 text-left py-4" color={"#222"}>Moxie  <span color={COLORS.gold}>Coach</span> </h1>
             <ul className="space-y-4">
                 {coaches.map(coach => (
                     <li
                         key={coach.id}
-                        className="items-center bg-[#2B2B2B] border  hover:bg-[#3A3A3A] transition backdrop-blur-md rounded-lg p-4 transition text-left"
+                        className="items-center bg-[#2B2B2B] border border-gray-700 hover:bg-[#3A3A3A] transition backdrop-blur-md rounded-lg p-4 transition text-left"
                     >
                         <Link to={`/pages/chat/${coach.id}`} className={"flex items-center"}>
                             <img

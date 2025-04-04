@@ -6,8 +6,12 @@ export const FooterNavbar = () => {
 
   const location = useLocation();
 
+
     const getActiveColor = (path: string) => {
-        return location.pathname === path ? COLORS.gold : '#FFFFFF';
+        if(path === '/') {
+            return location.pathname === '/' ? COLORS.gold : '#FFFFFF';
+        }
+        return location.pathname.startsWith(path) ? COLORS.gold : '#FFFFFF';
     };
 
     return (

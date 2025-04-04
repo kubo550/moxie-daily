@@ -1,0 +1,141 @@
+import React, {useEffect, useRef, useState} from "react";
+import {Link} from "react-router-dom";
+import {Actor, Message, QuoteType} from "@/types/QuoteType.ts";
+import {getGreetingCustomerMessageSuggestions, getGreetingMessageForCoach} from "@/utils/chatHelpers.ts";
+
+interface ChatWindowProps {
+    type: QuoteType;
+}
+
+export const ChatWindow: React.FC<ChatWindowProps> = ({type}) => {
+    const [messages, setMessages] = useState<Message[]>([
+        {id: 1, text: getGreetingMessageForCoach(type), actor: Actor.BOT},
+    ]);
+    const [input, setInput] = useState('');
+    const [isBotTyping, setIsBotTyping] = useState(false);
+    const messagesEndRef = useRef<HTMLDivElement | null>(null);
+
+    const sendMessage = () => {
+        if (input.trim() === '') return;
+
+        const newMessage: Message = {
+            id: Date.now(),
+            text: input,
+            actor: Actor.CUSTOMER,
+        };
+
+        setMessages((prev) => [...prev, newMessage]);
+        setInput('');
+        simulateBotReply();
+    };
+
+    const handleSuggestionClick = (text: string) => {
+        setMessages((prev) => [
+            ...prev,
+            {id: Date.now(), text, actor: Actor.CUSTOMER},
+        ]);
+        simulateBotReply(); // trigger bot response
+    };
+    const simulateBotReply = () => {
+        setIsBotTyping(true);
+
+        setTimeout(() => {
+            setMessages((prev) => [
+                ...prev,
+                {id: Date.now() + 1, text: 'Thanks for your message! I’ll get back to you shortly.', actor: Actor.BOT},
+            ]);
+            setIsBotTyping(false);
+        }, 2000);
+    };
+
+    const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
+        if (e.key === 'Enter') sendMessage();
+    };
+
+    useEffect(() => {
+        messagesEndRef.current?.scrollIntoView({behavior: 'smooth'});
+    }, [messages, isBotTyping]);
+
+    const suggestions = getGreetingCustomerMessageSuggestions(type);
+
+    return (
+        <div className="max-w-4xl min-h-[calc(100vh-140px)] max-h-[calc(100vh-140px)] flex flex-col bg-[#2B2B2B]">
+            <div className="pt-6 pb-3 text-white text-lg font-semibold flex items-center space-x-4 relative">
+                <Link to={`/pages/chat`}>
+                    <button className="text-white px-3 py-1 rounded absolute left-0 top-5">
+                        ← Back
+                    </button>
+                </Link>
+                <span className="text-center w-full pl-10">Chatting with {type} coach</span>
+            </div>
+
+            <div className="flex-1 overflow-y-auto p-4 space-y-2">
+                {messages.map((msg) => (
+                    <div
+                        key={msg.id}
+                        className={`flex ${msg.actor === 'bot' ? 'justify-start text-left' : 'justify-end text-right'}`}
+                    >
+                        <div
+                            className={`p-3 rounded shadow max-w-xs ${
+                                msg.actor === 'bot' ?  'bg-gray-900 text-gray-300': 'bg-blue-500 text-white'
+                            }`}
+                        >
+                            {msg.text}
+                        </div>
+                    </div>
+                ))}
+
+                {isBotTyping && (
+                    <div className="flex justify-start">
+                        <TypingIndicator/>
+                    </div>
+                )}
+
+                <div ref={messagesEndRef}/>
+
+                {!isBotTyping && suggestions.length > 0 && (
+                    <div className="flex flex-col items-end w-full px-4 pb-2 mt-4">
+                        <div className="flex flex-wrap gap-2 justify-end mb-2">
+                            {suggestions.map((suggestion, idx) => (
+                                <button
+                                    key={idx}
+                                    onClick={() => handleSuggestionClick(suggestion)}
+                                    className="bg-blue-500 border border-black text-sm px-3 py-2 rounded transition text-white"
+                                >
+                                    {suggestion}
+                                </button>
+                            ))}
+                        </div>
+                    </div>
+                )}
+            </div>
+
+            <div className="p-4 bg-[#2B2B2B] text-white border-t border-black flex items-center space-x-2">
+                <input
+                    type="text"
+                    className="flex-1  rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    placeholder="Type your message..."
+                    value={input}
+                    onChange={(e) => setInput(e.target.value)}
+                    onKeyDown={handleKeyPress}
+                />
+                <button
+                    className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
+                    onClick={sendMessage}
+                >
+                    Send
+                </button>
+            </div>
+        </div>
+    );
+};
+
+
+
+const TypingIndicator = () => (
+    <div className="flex space-x-1 p-3 rounded bg-gray-900 text-white max-w-xs">
+        <div className="animate-bounce w-2 h-2 bg-gray-300 rounded-full [animation-delay:0ms]"/>
+        <div className="animate-bounce w-2 h-2 bg-gray-300 rounded-full [animation-delay:200ms]"/>
+        <div className="animate-bounce w-2 h-2 bg-gray-300 rounded-full [animation-delay:400ms]"/>
+    </div>
+);

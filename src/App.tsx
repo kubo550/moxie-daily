@@ -6,6 +6,7 @@ import {Navbar} from "./components/Navbar.tsx";
 import {FooterNavbar} from "@/components/FooterNavbar.tsx";
 import {AboutMePage} from "@/pages/AboutMePage.tsx";
 import {ChatListPage} from "@/pages/ChatListPage.tsx";
+import {ChatPage} from "@/pages/ChatPage.tsx";
 
 
 
@@ -19,6 +20,7 @@ const App = () => {
                     <Route path="/" element={<DailyQuotePage/>}/>
                     <Route path="/:type" element={<DailyQuotePage/>}/>
                     <Route path="/pages/chat" element={<ChatListPage />}/>
+                    <Route path="/pages/chat/:type" element={<ChatPage />}/>
                     <Route path="/pages/about" element={<AboutMePage/>}/>
                 </Routes>
                 <FooterNavbar />
