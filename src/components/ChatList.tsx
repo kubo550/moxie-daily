@@ -36,8 +36,8 @@ const coaches: Coach[] = [
 
 export const ChatList = () => {
     return (
-        <div className="text-white p-6 max-w-xl rounded-[15px]">
-            <h1 className="text-2xl font-bold mb-6 text-left py-4" color={"#222"}>Moxie  <span color={COLORS.gold}>Coach</span> </h1>
+        <div className="text-white p-3 md:p-6 max-w-xl rounded-[15px] -mt-20">
+            <h1 className="text-2xl font-bold mb-3 md:mb-6 text-left md:py-4" color={"#222"}>Moxie <span color={COLORS.gold}>Coach</span> </h1>
             <ul className="space-y-4">
                 {coaches.map(coach => (
                     <li

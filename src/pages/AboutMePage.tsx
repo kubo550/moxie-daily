@@ -1,11 +1,10 @@
 import {getCurrentYear} from "@/lib/utils.ts";
-import {PageContainer} from "@/components/ui/PageContainer.tsx";
 
 export const AboutMePage = () => {
     return (
-        <PageContainer>
+        <div>
             <div className="px-5 text-white">
-                <h1 className="text-2xl pt-10 font-bold mb-6 text-left py-4" color={"#222"}>About Moxie</h1>
+                <h1 className="text-2xl md:pt-10 font-bold mb-6 text-left md:py-4" color={"#222"}>About Moxie</h1>
 
                 <div className="w-full max-w-4xl text-justify">
                     <section className="mb-8">
@@ -15,7 +14,7 @@ export const AboutMePage = () => {
                         </p>
                     </section>
 
-                    <section className="my-18">
+                    <section className="">
                         <h2 className="text-2xl font-semibold mb-4">Watch How Moxie Works</h2>
                         <div className="max-w-full">
                             <iframe className="w-full h-64" src="https://www.youtube.com/embed/"
@@ -30,7 +29,7 @@ export const AboutMePage = () => {
                     <p>© {getCurrentYear()} MoxieImpact. All Rights Reserved.</p>
                 </footer>
             </div>
-        </PageContainer>
+        </div>
     );
 };
 

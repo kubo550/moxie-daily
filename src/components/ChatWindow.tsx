@@ -59,7 +59,7 @@ export const ChatWindow: React.FC<ChatWindowProps> = ({type}) => {
     const suggestions = getGreetingCustomerMessageSuggestions(type);
 
     return (
-        <div className="max-w-4xl min-h-[calc(100vh-140px)] max-h-[calc(100vh-140px)] flex flex-col bg-[#2B2B2B]">
+        <div className="max-w-xl flex flex-col bg-[#2B2B2B] absolute mx-auto left-0 top-[60px] min-h-[calc(100vh-60px)]">
             <div className="pt-6 pb-3 text-white text-lg font-semibold flex items-center space-x-4 relative">
                 <Link to={`/pages/chat`}>
                     <button className="text-white px-3 py-1 rounded absolute left-0 top-5">
@@ -110,10 +110,10 @@ export const ChatWindow: React.FC<ChatWindowProps> = ({type}) => {
                 )}
             </div>
 
-            <div className="p-4 bg-[#2B2B2B] text-white border-t border-black flex items-center space-x-2">
+            <div className="p-4 bg-[#2B2B2B] text-white border-t border-black flex items-center space-x-2 mb-[80px] ">
                 <input
                     type="text"
-                    className="flex-1  rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="flex-1 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 "
                     placeholder="Type your message..."
                     value={input}
                     onChange={(e) => setInput(e.target.value)}
