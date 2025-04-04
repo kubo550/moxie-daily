@@ -27,5 +27,5 @@ export const buttonStyles = {
 
 export const COLORS = {
     primary: '#ffffff',
-    secondary: '#b98a00',
+    gold: '#e6b424',
 }

@@ -1,10 +1,14 @@
 import {FaHome, FaCommentDots, FaInfoCircle} from 'react-icons/fa';
-import {NavLink} from 'react-router-dom';
+import {NavLink, useLocation} from 'react-router-dom';
+import {COLORS} from "@/components/styles.ts";
 
 export const FooterNavbar = () => {
 
-    const getActiveColor = (_path: string) => {
-        return '#FFF'
+  const location = useLocation();
+  console.log('location', location.pathname);
+
+    const getActiveColor = (path: string) => {
+        return location.pathname === path ? COLORS.gold : '#FFFFFF';
     };
 
     return (
