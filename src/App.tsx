@@ -5,6 +5,7 @@ import {BackgroundVideo} from "./components/BackgroundVideo.tsx";
 import {Navbar} from "./components/Navbar.tsx";
 import {FooterNavbar} from "@/components/FooterNavbar.tsx";
 import {AboutMePage} from "@/pages/AboutMePage.tsx";
+import {ChatListPage} from "@/pages/ChatListPage.tsx";
 
 
 
@@ -17,7 +18,7 @@ const App = () => {
                 <Routes>
                     <Route path="/" element={<DailyQuotePage/>}/>
                     <Route path="/:type" element={<DailyQuotePage/>}/>
-                    <Route path="/pages/chat" element={<div> todo </div>}/>
+                    <Route path="/pages/chat" element={<ChatListPage />}/>
                     <Route path="/pages/about" element={<AboutMePage/>}/>
                 </Routes>
                 <FooterNavbar />

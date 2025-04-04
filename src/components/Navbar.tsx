@@ -7,7 +7,7 @@ export const Navbar = () => (
                 <img
                     src={logo}
                     alt="Moxie Daily Logo"
-                    className="h-20  sm:h-16 md:h-20 lg:h-24 max-w-xs mx-auto -mt-3 -ml-2 p-2"
+                    className="h-20  sm:h-16 md:h-20 lg:h-24 max-w-xs mx-auto -mt-3 -ml-2 p-3"
                 />
             </a>
         </div>

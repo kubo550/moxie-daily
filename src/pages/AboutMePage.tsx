@@ -2,7 +2,7 @@ import {getCurrentYear} from "@/lib/utils.ts";
 
 export const AboutMePage = () => {
     return (
-        <div className="flex flex-col items-center max-w-md text-white min-h-screen mt-40">
+        <div className="flex flex-col items-center max-w-md text-white min-h-[calc(100vh-260px)] bg-white/10 rounded-[15px] p-[20px] shadow-[0_8px_32px_rgba(0,0,0,0.37)] backdrop-blur-[15px] backdrop-contrast-90 backdrop-brightness-110 top-0">
 
             <div className="w-full max-w-4xl px-4 py-8 text-center">
                 <section className="mb-8">
@@ -19,7 +19,7 @@ export const AboutMePage = () => {
                 </section>
             </div>
 
-            <footer className="w-full bottom-[90px] absolute p-4 text-center text-gray-500">
+            <footer className="w-full p-4 text-center text-gray-500">
                 <p>© {getCurrentYear()} MoxieImpact. All Rights Reserved.</p>
             </footer>
         </div>

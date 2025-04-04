@@ -8,10 +8,8 @@ interface QuoteProps {
 const quoteStyles = {
     container: {
         background: "rgba(255, 255, 255, 0.1)",
-        borderRadius: "15px",
         padding: "20px",
         maxWidth: "600px",
-        margin: "0 auto 15rem",
         boxShadow: "0 8px 32px rgba(0, 0, 0, 0.37)",
         backdropFilter: "blur(15px) contrast(0.9) brightness(1.1)",
         WebkitBackdropFilter: "blur(15px) contrast(0.9) brightness(1.1)",
@@ -39,7 +37,7 @@ function fixQuote(text = '') {
 
 export const QuoteComponent: FC<QuoteProps> = ({text, caption}) => {
     return (
-        <div style={quoteStyles.container}>
+        <div style={quoteStyles.container} className="rounded-[15px] mb-[200px] mx-4">
             <h2 style={quoteStyles.text}>
                 <span style={quoteStyles.quoteMarks}>“</span>
                 {fixQuote(text)}

@@ -5,7 +5,6 @@ import {COLORS} from "@/components/styles.ts";
 export const FooterNavbar = () => {
 
   const location = useLocation();
-  console.log('location', location.pathname);
 
     const getActiveColor = (path: string) => {
         return location.pathname === path ? COLORS.gold : '#FFFFFF';
@@ -13,7 +12,7 @@ export const FooterNavbar = () => {
 
     return (
         <div
-            className="fixed bottom-0 left-0 w-full bg-black text-white flex justify-around items-center py-3 border-t border-gray-700 z-50">
+            className="fixed bottom-0 left-0 w-full bg-black text-white flex justify-around items-center py-3 border-t border-gray-700 z-50 h-[70px]">
             <NavLink to="/" className={`flex flex-col items-center text-sm`}>
                 <FaHome size={22} color={getActiveColor('/')}/>
                 <span className="mt-1">Home</span>
