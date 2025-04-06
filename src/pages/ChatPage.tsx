@@ -11,9 +11,7 @@ export const ChatPage = () => {
     }
 
     return (
-        <div>
             <ChatWindow type={type as QuoteType}/>
-        </div>
     );
 }
 

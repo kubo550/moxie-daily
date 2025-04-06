@@ -37,7 +37,7 @@ function fixQuote(text = '') {
 
 export const QuoteComponent: FC<QuoteProps> = ({text, caption}) => {
     return (
-        <div style={quoteStyles.container} className="rounded-[15px] mb-[200px] mx-4">
+        <div style={quoteStyles.container} className="rounded-[15px] -mt-[200px] mx-4">
             <h2 style={quoteStyles.text}>
                 <span style={quoteStyles.quoteMarks}>“</span>
                 {fixQuote(text)}
