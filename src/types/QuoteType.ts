@@ -27,13 +27,13 @@ export enum QuoteType {
 }
 
 
-export enum Actor {
-    CUSTOMER = 'customer',
-    BOT = 'bot',
+export enum Role {
+    user = 'user',
+    assistant = 'assistant',
 }
 
 export interface Message {
     id: number;
-    text: string;
-    actor: Actor;
+    content: string;
+    role: Role;
 };
