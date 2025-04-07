@@ -25,3 +25,15 @@ export enum QuoteType {
     success_mindset = "success_mindset",
     toxic_relationships = "toxic_relationships"
 }
+
+
+export enum Role {
+    user = 'user',
+    assistant = 'assistant',
+}
+
+export interface Message {
+    id: number;
+    content: string;
+    role: Role;
+};

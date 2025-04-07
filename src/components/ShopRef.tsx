@@ -2,7 +2,7 @@ import {CiShoppingBasket, CiShare2} from "react-icons/ci";
 import { LiaRandomSolid } from "react-icons/lia";
 import {FC, useState} from "react";
 import {Tooltip} from "react-tooltip";
-import {buttonStyle, buttonStyles, COLORS} from "./styles.ts";
+import {buttonClass, COLORS} from "./styles.ts";
 
 const redirectUrl = 'https://moxieimpact.com/pages/qr-apparel';
 
@@ -10,7 +10,7 @@ const redirectUrl = 'https://moxieimpact.com/pages/qr-apparel';
 
 export const ShopRef: React.FC = () => {
     return (
-        <a href={redirectUrl} target="_blank" rel="noreferrer" className="shop button" style={{...buttonStyle, width: '60px', height: '60px', display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
+        <a href={redirectUrl} target="_blank" rel="noreferrer" className={`${buttonClass} shop button`}>
             <Tooltip anchorSelect=".shop" style={{fontSize: '0.45em'}} place="top">
                 Shop
             </Tooltip>
@@ -29,7 +29,7 @@ export const NextQuoteButton:FC<{ onNextQuote: () => void }> = ({onNextQuote}) =
     }
 
     return (
-        <button style={buttonStyles} className={loading ? 'loading next' : 'next'} onClick={handleClick}>
+        <button className={`${loading ? 'loading next' : 'next'} ${buttonClass}`} onClick={handleClick}>
             <Tooltip anchorSelect=".next" style={{fontSize: '0.45em'}} place="top">
                 Next
             </Tooltip>
@@ -51,7 +51,7 @@ export const ShareButton = () => {
     }
 
     return (
-        <button style={buttonStyles} onClick={onClick} className="share">
+        <button onClick={onClick} className={`${buttonClass} share`}>
             <Tooltip anchorSelect=".share" style={{fontSize: '0.4em'}} place="top">
                 {tooltipText}
             </Tooltip>
@@ -62,7 +62,7 @@ export const ShareButton = () => {
 
 const styles = {
     position: 'fixed',
-    bottom: '28px',
+    bottom: '95px',
     right: '50%',
     transform: 'translateX(50%)',
     zIndex: 10,
