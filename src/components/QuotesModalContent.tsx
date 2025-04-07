@@ -15,7 +15,7 @@ export const QuotesModalContent: React.FC<QuotesModalContentProps> =  ({
     selectedTypes,
     handleQuoteTypeSelect,
     handleQuoteTypeRemove
-                                              }) => {
+ }) => {
     return <div
         className='grid gap-4 py-6 grid-cols-[repeat(auto-fill,minmax(100px,1fr))] md:grid-cols-[repeat(4,minmax(100px,1fr))]'>
         {availableTypes.map(type => {

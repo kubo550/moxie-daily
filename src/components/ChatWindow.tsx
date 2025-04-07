@@ -1,7 +1,8 @@
 import React, {useEffect, useRef, useState} from "react";
 import {Link} from "react-router-dom";
-import {Actor, Message, QuoteType} from "@/types/QuoteType.ts";
+import {Message, QuoteType, Role} from "@/types/QuoteType.ts";
 import {getGreetingCustomerMessageSuggestions, getGreetingMessageForCoach} from "@/utils/chatHelpers.ts";
+import {askByApiCall} from "@/utils/api/chat.ts";
 
 interface ChatWindowProps {
     type: QuoteType;
@@ -9,43 +10,56 @@ interface ChatWindowProps {
 
 export const ChatWindow: React.FC<ChatWindowProps> = ({type}) => {
     const [messages, setMessages] = useState<Message[]>([
-        {id: 1, text: getGreetingMessageForCoach(type), actor: Actor.BOT},
+        {id: 1, content: getGreetingMessageForCoach(type), role: Role.assistant},
     ]);
     const [input, setInput] = useState('');
     const [isBotTyping, setIsBotTyping] = useState(false);
+    const [isError, setIsError] = useState(false);
     const messagesEndRef = useRef<HTMLDivElement | null>(null);
 
-    const sendMessage = () => {
+    const sendMessage = async () => {
+        setIsError(false);
         if (input.trim() === '') return;
 
         const newMessage: Message = {
             id: Date.now(),
-            text: input,
-            actor: Actor.CUSTOMER,
+            content: input,
+            role: Role.user,
         };
 
         setMessages((prev) => [...prev, newMessage]);
         setInput('');
-        simulateBotReply();
+        await askBot(input);
     };
 
-    const handleSuggestionClick = (text: string) => {
+    const handleSuggestionClick = async (text: string) => {
         setMessages((prev) => [
             ...prev,
-            {id: Date.now(), text, actor: Actor.CUSTOMER},
+            {id: Date.now(), content: text, role: Role.user},
         ]);
-        simulateBotReply(); // trigger bot response
+        await askBot(text);
     };
-    const simulateBotReply = () => {
+    const askBot = async (userReply: string) => {
         setIsBotTyping(true);
 
-        setTimeout(() => {
-            setMessages((prev) => [
-                ...prev,
-                {id: Date.now() + 1, text: 'Thanks for your message! I’ll get back to you shortly.', actor: Actor.BOT},
+        try {
+            const response = await askByApiCall([
+                ...messages,
+                {id: Date.now(), content: userReply, role: Role.user},
             ]);
+            const botMessage: Message = {
+                id: Date.now(),
+                content: response.reply,
+                role: Role.assistant,
+            };
+            setMessages((prev) => [...prev, botMessage]);
+
+        } catch (e) {
+            setIsError(true);
+            console.error('Error:', e);
+        } finally {
             setIsBotTyping(false);
-        }, 2000);
+        }
     };
 
     const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
@@ -59,7 +73,8 @@ export const ChatWindow: React.FC<ChatWindowProps> = ({type}) => {
     const suggestions = getGreetingCustomerMessageSuggestions(type);
 
     return (
-        <div className="max-w-xl flex flex-col bg-[#2B2B2B] absolute top-[60px] min-h-[calc(100vh-60px)] left-0 sm:left-1/2 sm:transform sm:-translate-x-1/2 min-w-[100%] sm:min-w-[500px] sm:max-w-[500px] shadow-lg rounded-lg">
+        <div
+            className="max-w-xl flex flex-col bg-[#2B2B2B] absolute top-[60px] min-h-[calc(100vh-60px)] left-0 sm:left-1/2 sm:transform sm:-translate-x-1/2 min-w-[100%] sm:min-w-[500px] sm:max-w-[500px] shadow-lg rounded-lg">
             <div className="min-w-full pt-6 pb-3 text-white text-lg font-semibold flex items-center space-x-4 relative">
                 <Link to={`/pages/chat`}>
                     <button className="text-white px-3 py-1 rounded absolute left-0 top-5">
@@ -69,18 +84,19 @@ export const ChatWindow: React.FC<ChatWindowProps> = ({type}) => {
                 <span className="text-center w-full pl-10">Chatting with {type} coach</span>
             </div>
 
+
             <div className="flex-1 overflow-y-auto p-4 space-y-2 min-w-full ">
                 {messages.map((msg) => (
                     <div
                         key={msg.id}
-                        className={`flex ${msg.actor === 'bot' ? 'justify-start text-left' : 'justify-end text-right'}`}
+                        className={`flex ${msg.role === Role.assistant ? 'justify-start text-left' : 'justify-end text-right'}`}
                     >
                         <div
                             className={`p-3 rounded shadow max-w-xs ${
-                                msg.actor === 'bot' ? 'bg-gray-900 text-gray-300' : 'bg-blue-500 text-white'
+                                msg.role === Role.assistant ? 'bg-gray-900 text-gray-300' : 'bg-blue-500 text-white'
                             }`}
                         >
-                            {msg.text}
+                            {msg.content}
                         </div>
                     </div>
                 ))}
@@ -89,8 +105,15 @@ export const ChatWindow: React.FC<ChatWindowProps> = ({type}) => {
 
                 <div ref={messagesEndRef}/>
 
-                {!isBotTyping && <Suggestions suggestions={suggestions} onClick={handleSuggestionClick} />}
+                {!isBotTyping && <Suggestions suggestions={suggestions} onClick={handleSuggestionClick}/>}
             </div>
+
+            {isError && (
+                <div className="text-red-500 text-center p-4">
+                    An error occurred while fetching the response. Please try again later.
+                </div>
+            )}
+
 
             <div className="p-4 bg-[#2B2B2B] text-white border-t border-black flex items-center space-x-2 mb-[80px] ">
                 <input
