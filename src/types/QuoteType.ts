@@ -25,3 +25,15 @@ export enum QuoteType {
     success_mindset = "success_mindset",
     toxic_relationships = "toxic_relationships"
 }
+
+
+export enum Actor {
+    CUSTOMER = 'customer',
+    BOT = 'bot',
+}
+
+export interface Message {
+    id: number;
+    text: string;
+    actor: Actor;
+};

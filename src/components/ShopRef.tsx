@@ -62,7 +62,7 @@ export const ShareButton = () => {
 
 const styles = {
     position: 'fixed',
-    bottom: '28px',
+    bottom: '95px',
     right: '50%',
     transform: 'translateX(50%)',
     zIndex: 10,

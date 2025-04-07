@@ -30,7 +30,7 @@ export const QuotesModalContent: React.FC<QuotesModalContentProps> =  ({
                     <img
                         src={`https://github.com/kubo550/moxie-daily/blob/main/public/types/${type}.jpg?raw=true`}
                         alt={type}
-                        className="w-full h-48 object-cover brightness-75 contrast-110"
+                        className="w-full h-36 object-cover brightness-75 contrast-110"
                     />
 
                     <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-black/30 z-10"></div>

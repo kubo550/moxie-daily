@@ -2,7 +2,7 @@ import {useSearchParams} from "react-router-dom";
 import {QuoteProviderProps} from "../components/QuoteProvider.tsx";
 import {ButtonsContainer} from "../components/ShopRef.tsx";
 import {useCallback, useLayoutEffect, useRef, useState} from "react";
-import { getQuoteById, getQuotesByType, Quote} from "../infrastructure/qoutes.ts";
+import {getQuoteById, getQuotesByType, Quote} from "../infrastructure/qoutes.ts";
 import {Button} from "@/components/ui/button.tsx";
 import QuotesModal from "@/components/QuotesModal.tsx";
 import {QuoteType} from "@/types/QuoteType.ts";
@@ -12,12 +12,12 @@ import {QuotesModalContent} from "@/components/QuotesModalContent.tsx";
 
 const quoteTypesNameLocalStorageKey = "quoteTypes"
 
-export const DailyQuote = () => {
+export const DailyQuotePage = () => {
     const [searchParams, setSearchParams] = useSearchParams();
     const [currentQuote, setCurrentQuote] = useState<Quote | null>(null);
     const [quotes, setQuotes] = useState<Quote[]>([]);
     const [quotesModalOpen, setQuotesModalOpen] = useState(false)
-    const [selectedTypes, setSelectedTypes] = useState<QuoteType[]>(getFromLocalStorage<QuoteType[]>(quoteTypesNameLocalStorageKey) || []);
+    const [selectedTypes, setSelectedTypes] = useState<QuoteType[]>(getFromLocalStorage<QuoteType[]>(quoteTypesNameLocalStorageKey) || [QuoteType.devotional]);
 
     const fetchQuoteById = async (id: string) => {
         const quote = await getQuoteById(id)
@@ -72,7 +72,7 @@ export const DailyQuote = () => {
         <div ref={ref}>
             <QuoteProviderProps quote={currentQuote} />
 
-            <Button onClick={() => setQuotesModalOpen(true)} className='capitalize'> Select your inspiration </Button>
+            <Button onClick={() => setQuotesModalOpen(true)} className='capitalize absolute bottom-[200px] md:bottom-[180px]'> Select your inspiration </Button>
 
             <QuotesModal open={quotesModalOpen} onOpenChange={setQuotesModalOpen}>
                 <QuotesModalContent handleQuoteTypeRemove={handleQuoteTypeRemove} handleQuoteTypeSelect={handleQuoteTypeSelect} selectedTypes={selectedTypes} />
