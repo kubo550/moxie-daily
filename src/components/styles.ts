@@ -14,6 +14,20 @@ export const buttonStyle = {
     cursor: 'pointer',
 } as const;
 
+export const buttonClass = `
+  w-[60px] h-[60px]
+  rounded-full
+  bg-neutral-700
+  hover:bg-neutral-700/10
+  active:scale-110
+  cursor-pointer
+  transition duration-300
+  flex items-center justify-center
+  text-white
+  shadow-xl
+  backdrop-blur-[10px]
+`.trim();
+
 
 export const buttonStyles = {
     ...buttonStyle,
