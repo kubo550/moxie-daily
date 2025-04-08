@@ -2,6 +2,7 @@ import * as React from "react";
 import {getQuoteTypeName} from "@/utils/quotes.ts";
 import {getAvailableTypes} from "@/infrastructure/qoutes.ts";
 import {QuoteType} from "@/types/QuoteType.ts";
+import {getBackgroundImage} from "@/types/typesBacgroundImages.ts";
 
 const availableTypes = getAvailableTypes();
 
@@ -15,7 +16,7 @@ export const QuotesModalContent: React.FC<QuotesModalContentProps> =  ({
     selectedTypes,
     handleQuoteTypeSelect,
     handleQuoteTypeRemove
-                                              }) => {
+ }) => {
     return <div
         className='grid gap-4 py-6 grid-cols-[repeat(auto-fill,minmax(100px,1fr))] md:grid-cols-[repeat(4,minmax(100px,1fr))]'>
         {availableTypes.map(type => {
@@ -28,7 +29,7 @@ export const QuotesModalContent: React.FC<QuotesModalContentProps> =  ({
                     className={`relative cursor-pointer rounded-lg overflow-hidden transition-transform duration-200 ${isSelected ? 'scale-95 ring-4 ring-indigo-600' : 'scale-100'}`}
                 >
                     <img
-                        src={`https://github.com/kubo550/moxie-daily/blob/main/public/types/${type}.jpg?raw=true`}
+                        src={getBackgroundImage(type)}
                         alt={type}
                         className="w-full h-36 object-cover brightness-75 contrast-110"
                     />
