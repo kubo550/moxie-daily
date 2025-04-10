@@ -93,7 +93,7 @@ export const AboutMePage = () => {
         <h1 className="text-2xl md:pt-8 font-bold mb-4 text-left pt-3 md:py-4 text-white">
           About Moxie
         </h1>
-        <div className="w-full max-w-4xl text-justify h-[calc(100vh-300px)] overflow-y-auto pr-2 custom-scrollbar">
+        <div className="w-full max-w-4xl text-justify h-[calc(100vh-270px)] overflow-y-auto pr-2 custom-scrollbar">
           <section className="mb-8">
             <p className="text-lg leading-relaxed">
               A Bridge of Support. A Badge of Strength. A Daily Reminder That
@@ -153,7 +153,7 @@ export const AboutMePage = () => {
               ))}
             </div>
           </section>
-          <section className="mb-8 max-w-2xl mx-auto flex flex-col items-center">
+          <section className="max-w-2xl mx-auto flex flex-col items-center">
             {messages.map((message, index) => (
               <p
                 key={index}
@@ -168,7 +168,7 @@ export const AboutMePage = () => {
             ))}
           </section>
         </div>
-        <footer className="w-full p-6 text-center mt-4">
+        <footer className="w-full mt-2 p-3 text-center ">
           <p>© {getCurrentYear()} MoxieImpact. All Rights Reserved.</p>
         </footer>
       </div>
