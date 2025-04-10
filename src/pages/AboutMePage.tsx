@@ -80,7 +80,7 @@ const messages = [
 
 const renderContent = (content: string) => {
   return content.split('\n\n').map((paragraph, index) => (
-    <p key={index} className="text-sm text-gray-400 text-justify mb-3">
+    <p key={index} className="text-sm text-gray-200 text-justify mb-3">
       {paragraph}
     </p>
   ));
@@ -89,11 +89,11 @@ const renderContent = (content: string) => {
 export const AboutMePage = () => {
   return (
     <div className="md:rounded-[15px] shadow-[0_8px_32px_rgba(0,0,0,0.37)] backdrop-blur-[15px] backdrop-contrast-90 backdrop-brightness-110 my-8">
-      <div className="px-5 text-white max-w-md">
-        <h1 className="text-2xl md:pt-8 font-bold mb-4 text-left md:py-4 text-white">
+      <div className="min-h-[calc(100vh-140px)] px-5 text-white max-w-md">
+        <h1 className="text-2xl md:pt-8 font-bold mb-4 text-left pt-3 md:py-4 text-white">
           About Moxie
         </h1>
-        <div className="w-full max-w-4xl text-justify h-[500px] overflow-y-auto pr-2 custom-scrollbar">
+        <div className="w-full max-w-4xl text-justify h-[calc(100vh-300px)] overflow-y-auto pr-2 custom-scrollbar">
           <section className="mb-8">
             <p className="text-lg leading-relaxed">
               A Bridge of Support. A Badge of Strength. A Daily Reminder That
@@ -107,7 +107,6 @@ export const AboutMePage = () => {
             <iframe
               className="w-full"
               src="https://player.vimeo.com/video/1072654894?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479"
-              frameBorder="0"
               allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media"
               title="Moxie"
             ></iframe>
@@ -118,7 +117,9 @@ export const AboutMePage = () => {
                 <div className="py-5" key={aboutMeElement.title}>
                   <details className="group">
                     <summary className="flex justify-between items-center font-medium cursor-pointer list-none text-l">
-                      <span>{aboutMeElement.title}</span>
+                      <span className="text-white font-semibold">
+                        {aboutMeElement.title}
+                      </span>
                       <span className="transition group-open:rotate-180">
                         <svg
                           fill="none"
@@ -135,12 +136,12 @@ export const AboutMePage = () => {
                         </svg>
                       </span>
                     </summary>
-                    <div className="text-neutral-600 mt-3 group-open:animate-fadeIn">
+                    <div className="text-gray-200 mt-3 group-open:animate-fadeIn">
                       {renderContent(aboutMeElement.content)}
                     </div>
                     <div>
                       {aboutMeElement.bulletPoints.length > 0 && (
-                        <ul className="list-disc pl-5 mt-2 text-sm text-gray-400">
+                        <ul className="list-disc pl-5 mt-2 text-sm text-gray-200">
                           {aboutMeElement.bulletPoints.map((point, index) => (
                             <li key={index}>{point}</li>
                           ))}
@@ -152,13 +153,13 @@ export const AboutMePage = () => {
               ))}
             </div>
           </section>
-          <section className="mb-8 max-w-2xl mx-auto">
+          <section className="mb-8 max-w-2xl mx-auto flex flex-col items-center">
             {messages.map((message, index) => (
               <p
                 key={index}
                 className={`
               text-l font-medium tracking-wide py-2
-              ${index === 0 ? 'text-l font-bold text-white mb-4' : 'text-gray-300'}
+              ${index === 0 ? 'text-l font-bold text-white mb-4' : 'text-white'}
               ${index === messages.length - 1 ? 'mt-2 font-bold text-white' : ''}
             `}
               >
