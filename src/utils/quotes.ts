@@ -1,58 +1,58 @@
-import {QuoteType} from "@/types/QuoteType.ts";
+import { QuoteType } from '@/types/QuoteType.ts';
 
 export const getQuoteTypeName = (type: QuoteType) => {
   switch (type) {
     case QuoteType.affirmation:
-      return "Affirmation";
+      return 'Affirmation';
     case QuoteType.anxiety_relief:
-      return "Anxiety Relief";
+      return 'Anxiety Relief';
     case QuoteType.attract_love:
-      return "Attract Love";
+      return 'Attract Love';
     case QuoteType.attract_money:
-      return "Attract Money";
+      return 'Attract Money';
     case QuoteType.breakups:
-      return "Breakups";
+      return 'Breakups';
     case QuoteType.build_confidence:
-      return "Build Confidence";
+      return 'Build Confidence';
     case QuoteType.devotional:
-      return "Devotional";
+      return 'Devotional';
     case QuoteType.discipline:
-      return "Discipline";
+      return 'Discipline';
     case QuoteType.drink_less:
-      return "Drink Less";
+      return 'Drink Less';
     case QuoteType.focus:
-      return "Focus";
+      return 'Focus';
     case QuoteType.hard_times:
-      return "Hard Times";
+      return 'Hard Times';
     case QuoteType.law_of_attraction:
-      return "Law of Attraction";
+      return 'Law of Attraction';
     case QuoteType.lose_weight:
-      return "Lose Weight";
+      return 'Lose Weight';
     case QuoteType.love_yourself:
-      return "Love Yourself";
+      return 'Love Yourself';
     case QuoteType.marriage:
-      return "Marriage";
+      return 'Marriage';
     case QuoteType.meditation:
-      return "Meditation";
+      return 'Meditation';
     case QuoteType.mental_health:
-      return "Mental Health";
+      return 'Mental Health';
     case QuoteType.motivation:
-      return "Motivation";
+      return 'Motivation';
     case QuoteType.personal_growth:
-      return "Personal Growth";
+      return 'Personal Growth';
     case QuoteType.phone_addiction:
-      return "Phone Addiction";
+      return 'Phone Addiction';
     case QuoteType.positive_mindset:
-      return "Positive Mindset";
+      return 'Positive Mindset';
     case QuoteType.power_life:
-      return "Power Life";
+      return 'Power Life';
     case QuoteType.relationships:
-      return "Relationships";
+      return 'Relationships';
     case QuoteType.success_mindset:
-      return "Success Mindset";
+      return 'Success Mindset';
     case QuoteType.toxic_relationships:
-      return "Toxic Relationships";
+      return 'Toxic Relationships';
     default:
-      return "Random Quote";
+      return 'Random Quote';
   }
-}
+};
