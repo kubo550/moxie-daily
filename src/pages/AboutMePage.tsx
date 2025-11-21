@@ -88,12 +88,12 @@ const renderContent = (content: string) => {
 
 export const AboutMePage = () => {
   return (
-    <div className="md:rounded-[15px] shadow-[0_8px_32px_rgba(0,0,0,0.37)] backdrop-blur-[15px] backdrop-contrast-90 backdrop-brightness-110 my-8">
-      <div className="min-h-[calc(100vh-140px)] px-5 text-white max-w-md">
+    <div className="md:rounded-[15px] shadow-[0_8px_32px_rgba(0,0,0,0.37)] backdrop-blur-[15px] backdrop-contrast-90 backdrop-brightness-110 max-h-[80vh] overflow-hidden">
+      <div className="px-5 text-white max-w-md h-full overflow-y-auto">
         <h1 className="text-2xl md:pt-8 font-bold mb-4 text-left pt-3 md:py-4 text-white">
           About Moxie
         </h1>
-        <div className="w-full max-w-4xl text-justify h-[calc(100vh-270px)] overflow-y-auto pr-2 custom-scrollbar">
+        <div className="w-full max-w-4xl text-justify h-[calc(100vh-300px)] md:h-[calc(100vh-410px)] lg:h-[calc(100vh-425px)] xl:h-[calc(100vh-407px)] overflow-y-auto pr-2 custom-scrollbar">
           <section className="mb-8">
             <p className="text-lg leading-relaxed">
               A Bridge of Support. A Badge of Strength. A Daily Reminder That
@@ -115,7 +115,7 @@ export const AboutMePage = () => {
             <div className="grid divide-y divide-neutral-200 max-w-xl mx-auto mt-8">
               {aboutMeElements.map((aboutMeElement) => (
                 <div className="py-5" key={aboutMeElement.title}>
-                  <details className="group">
+                  <details className="group no-marker">
                     <summary className="flex justify-between items-center font-medium cursor-pointer list-none text-l">
                       <span className="text-white font-semibold">
                         {aboutMeElement.title}
@@ -159,8 +159,8 @@ export const AboutMePage = () => {
                 key={index}
                 className={`
               text-l font-medium tracking-wide py-2
-              ${index === 0 ? 'text-l font-bold text-white mb-4' : 'text-white'}
-              ${index === messages.length - 1 ? 'mt-2 font-bold text-white' : ''}
+              ${index === 0 ? 'text-l font-bold text-white mb-1' : 'text-white'}
+              ${index === messages.length - 1 ? 'mt-1 font-bold text-white' : ''}
             `}
               >
                 {message}
@@ -168,7 +168,7 @@ export const AboutMePage = () => {
             ))}
           </section>
         </div>
-        <footer className="w-full mt-2 p-3 text-center ">
+        <footer className="w-full mb-1 p-3 text-center">
           <p>© {getCurrentYear()} MoxieImpact. All Rights Reserved.</p>
         </footer>
       </div>

@@ -23,7 +23,7 @@ Web app to help you keep track of your daily quotes and thoughts.
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/404de92f-ad96-43d6-9788-7529f925816a/deploy-status)](https://app.netlify.com/sites/chic-crumble-94a11f/deploys)
 
-
+Moxie daily app [here](https://moxiedaily.co/) 
 
 Moxie shop [here](https://moxieimpact.com/)
 

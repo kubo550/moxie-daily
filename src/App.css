@@ -78,3 +78,6 @@
     z-index: 100;
   }
 }
+.no-marker summary::-webkit-details-marker {
+  display: none;
+}
