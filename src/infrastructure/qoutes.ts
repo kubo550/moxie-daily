@@ -25,10 +25,8 @@ export const getQuoteById = async (id: string): Promise<Quote> => {
   try {
     const cachedQuote = CacheProvider.getInstance().getQuote(id);
     if (cachedQuote) {
-      console.log('Quote found in cache: ', { id });
       return cachedQuote;
     }
-    console.log('Fetching quote from DB: ', { id });
     const quotes = await QuoteDBProvider.getInstance().fetchQuotesFromDB();
 
     return (
@@ -63,29 +61,20 @@ export const getAvailableTypes = () => {
   return [
     QuoteType.affirmation,
     QuoteType.anxiety_relief,
-    QuoteType.attract_love,
-    QuoteType.attract_money,
-    QuoteType.breakups,
     QuoteType.build_confidence,
     QuoteType.devotional,
     QuoteType.discipline,
-    QuoteType.drink_less,
     QuoteType.focus,
     QuoteType.hard_times,
     QuoteType.law_of_attraction,
     QuoteType.lose_weight,
     QuoteType.love_yourself,
-    QuoteType.marriage,
     QuoteType.meditation,
     QuoteType.mental_health,
     QuoteType.motivation,
     QuoteType.personal_growth,
-    QuoteType.phone_addiction,
     QuoteType.positive_mindset,
-    QuoteType.power_life,
-    QuoteType.relationships,
     QuoteType.success_mindset,
-    QuoteType.toxic_relationships,
   ];
 };
 
