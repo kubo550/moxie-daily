@@ -57,25 +57,150 @@ export const getQuotesByType = async (
     return fallbackQuotes;
   }
 };
+export type Category = {
+  id: string;
+  name: string;
+  subcategories: QuoteType[];
+};
+
+export const CATEGORIES: Category[] = [
+  {
+    id: 'mental_health',
+    name: 'Mental Health & Emotional Support',
+    subcategories: [
+      QuoteType.anxiety_relief,
+      QuoteType.stress_overwhelm,
+      QuoteType.hard_times,
+      QuoteType.mental_health,
+      QuoteType.calm_mind,
+      QuoteType.emotional_reset,
+      QuoteType.overcoming_fear,
+      QuoteType.not_alone,
+    ],
+  },
+  {
+    id: 'confidence',
+    name: 'Confidence, Identity & Self-Worth',
+    subcategories: [
+      QuoteType.build_confidence,
+      QuoteType.love_yourself,
+      QuoteType.self_belief,
+      QuoteType.inner_strength,
+      QuoteType.overcoming_self_doubt,
+      QuoteType.mindset_rewiring,
+    ],
+  },
+  {
+    id: 'motivation',
+    name: 'Motivation, Discipline & Daily Drive',
+    subcategories: [
+      QuoteType.motivation,
+      QuoteType.discipline,
+      QuoteType.focus,
+      QuoteType.positive_mindset,
+      QuoteType.success_mindset,
+      QuoteType.personal_growth,
+      QuoteType.consistency_habits,
+      QuoteType.goal_crusher,
+    ],
+  },
+  {
+    id: 'athlete',
+    name: 'Athlete Mindset',
+    subcategories: [
+      QuoteType.athlete_confidence,
+      QuoteType.game_day_focus,
+      QuoteType.pre_workout_motivation,
+      QuoteType.mental_toughness,
+      QuoteType.bounce_back,
+      QuoteType.pressure_performance,
+    ],
+  },
+  {
+    id: 'wellness',
+    name: 'Wellness, Mindfulness & Inner Peace',
+    subcategories: [
+      QuoteType.meditation,
+      QuoteType.breathe_reset,
+      QuoteType.healthy_habits,
+      QuoteType.mind_body_wellness,
+      QuoteType.lose_weight,
+      QuoteType.energy_renewal,
+    ],
+  },
+  {
+    id: 'spiritual',
+    name: 'Spiritual & Faith-Based',
+    subcategories: [
+      QuoteType.devotional,
+      QuoteType.prayer_peace,
+      QuoteType.scripture_strength,
+      QuoteType.gods_plan,
+      QuoteType.hope_healing,
+      QuoteType.walk_in_faith,
+    ],
+  },
+  {
+    id: 'business',
+    name: 'Business, Leadership & Work',
+    subcategories: [
+      QuoteType.leadership_mindset,
+      QuoteType.career_calling,
+      QuoteType.productivity_boost,
+      QuoteType.entrepreneur_fuel,
+      QuoteType.employee_wellness,
+      QuoteType.resilience_work,
+    ],
+  },
+  {
+    id: 'recovery',
+    name: 'Addiction, Recovery & Overcoming',
+    subcategories: [
+      QuoteType.recovery_strength,
+      QuoteType.one_day_at_time,
+      QuoteType.freedom_addiction,
+      QuoteType.new_beginnings,
+      QuoteType.stay_the_course,
+      QuoteType.rebuild_life,
+    ],
+  },
+  {
+    id: 'relationships',
+    name: 'Relationships, Love & Connection',
+    subcategories: [
+      QuoteType.relationships,
+      QuoteType.forgiveness_letting_go,
+      QuoteType.compassion_kindness,
+      QuoteType.strengthening_bonds,
+      QuoteType.healing_broken_heart,
+    ],
+  },
+  {
+    id: 'gratitude',
+    name: 'Gratitude & Joy',
+    subcategories: [
+      QuoteType.gratitude,
+      QuoteType.joyful_living,
+      QuoteType.appreciation_presence,
+      QuoteType.celebrate_wins,
+    ],
+  },
+  {
+    id: 'first_responders',
+    name: 'First Responders & Helpers',
+    subcategories: [
+      QuoteType.first_responder_support,
+      QuoteType.share_hope,
+      QuoteType.calming_crisis,
+      QuoteType.you_matter,
+      QuoteType.crisis_comfort,
+      QuoteType.grounding_tools,
+    ],
+  },
+];
+
 export const getAvailableTypes = () => {
-  return [
-    QuoteType.affirmation,
-    QuoteType.anxiety_relief,
-    QuoteType.build_confidence,
-    QuoteType.devotional,
-    QuoteType.discipline,
-    QuoteType.focus,
-    QuoteType.hard_times,
-    QuoteType.law_of_attraction,
-    QuoteType.lose_weight,
-    QuoteType.love_yourself,
-    QuoteType.meditation,
-    QuoteType.mental_health,
-    QuoteType.motivation,
-    QuoteType.personal_growth,
-    QuoteType.positive_mindset,
-    QuoteType.success_mindset,
-  ];
+  return CATEGORIES.flatMap((category) => category.subcategories);
 };
 
 const fallbackQuotes = [
