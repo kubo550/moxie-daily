@@ -6,6 +6,7 @@ import {
   getQuoteById,
   getQuotesByType,
   Quote,
+  getAvailableTypes,
 } from '../infrastructure/qoutes.ts';
 import { Button } from '@/components/ui/button.tsx';
 import QuotesModal from '@/components/QuotesModal.tsx';
@@ -25,9 +26,8 @@ export const DailyQuotePage = () => {
   const [quotes, setQuotes] = useState<Quote[]>([]);
   const [quotesModalOpen, setQuotesModalOpen] = useState(false);
   const [selectedTypes, setSelectedTypes] = useState<QuoteType[]>(
-    getFromLocalStorage<QuoteType[]>(quoteTypesNameLocalStorageKey) || [
-      QuoteType.devotional,
-    ]
+    getFromLocalStorage<QuoteType[]>(quoteTypesNameLocalStorageKey) ||
+      getAvailableTypes()
   );
 
   const fetchQuoteById = async (id: string) => {

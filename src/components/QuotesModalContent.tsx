@@ -31,6 +31,12 @@ export const QuotesModalContent: React.FC<QuotesModalContentProps> = ({
     ).length;
   };
 
+  const areAllSelectedInCategory = (categoryId: string) => {
+    const category = CATEGORIES.find((c) => c.id === categoryId);
+    if (!category) return false;
+    return category.subcategories.every((type) => selectedTypes.includes(type));
+  };
+
   const handleSubcategoryToggle = (type: QuoteType) => {
     if (selectedTypes.includes(type)) {
       handleQuoteTypeRemove(type);
@@ -39,11 +45,35 @@ export const QuotesModalContent: React.FC<QuotesModalContentProps> = ({
     }
   };
 
+  const handleSelectAllInCategory = (categoryId: string) => {
+    const category = CATEGORIES.find((c) => c.id === categoryId);
+    if (!category) return;
+
+    category.subcategories.forEach((type) => {
+      if (!selectedTypes.includes(type)) {
+        handleQuoteTypeSelect(type);
+      }
+    });
+  };
+
+  const handleDeselectAllInCategory = (categoryId: string) => {
+    const category = CATEGORIES.find((c) => c.id === categoryId);
+    if (!category) return;
+
+    category.subcategories.forEach((type) => {
+      if (selectedTypes.includes(type)) {
+        handleQuoteTypeRemove(type);
+      }
+    });
+  };
+
   return (
     <div className="flex flex-col gap-3 py-4">
       {CATEGORIES.map((category) => {
         const isExpanded = expandedCategory === category.id;
         const selectedCount = getSelectedCountInCategory(category.id);
+        const allSelected = areAllSelectedInCategory(category.id);
+        const noneSelected = selectedCount === 0;
 
         return (
           <div key={category.id} className="flex flex-col">
@@ -111,6 +141,36 @@ export const QuotesModalContent: React.FC<QuotesModalContentProps> = ({
                   className="overflow-hidden"
                 >
                   <div className="pt-2 pb-1 px-1">
+                    {/* Select/Deselect All Buttons */}
+                    <div className="flex gap-2 mb-3">
+                      <button
+                        onClick={() => handleSelectAllInCategory(category.id)}
+                        disabled={allSelected}
+                        className={`flex-1 min-h-[36px] px-3 py-1.5 rounded-lg text-xs font-medium
+                          transition-all duration-150 border
+                          ${
+                            allSelected
+                              ? 'bg-indigo-600/10 text-indigo-300/40 border-indigo-600/20 cursor-not-allowed'
+                              : 'bg-indigo-600/20 text-indigo-300 hover:bg-indigo-600/30 active:scale-95 border-indigo-600/30'
+                          }`}
+                      >
+                        Select All
+                      </button>
+                      <button
+                        onClick={() => handleDeselectAllInCategory(category.id)}
+                        disabled={noneSelected}
+                        className={`flex-1 min-h-[36px] px-3 py-1.5 rounded-lg text-xs font-medium
+                          transition-all duration-150 border
+                          ${
+                            noneSelected
+                              ? 'bg-white/5 text-white/30 border-white/5 cursor-not-allowed'
+                              : 'bg-white/5 text-white/70 hover:bg-white/10 active:scale-95 border-white/10'
+                          }`}
+                      >
+                        Deselect All
+                      </button>
+                    </div>
+
                     <div className="flex flex-wrap gap-2">
                       {category.subcategories.map((type) => {
                         const isSelected = selectedTypes.includes(type);
