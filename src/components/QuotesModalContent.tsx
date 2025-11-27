@@ -49,10 +49,10 @@ export const QuotesModalContent: React.FC<QuotesModalContentProps> = ({
     const category = CATEGORIES.find((c) => c.id === categoryId);
     if (!category) return;
 
+    // Remove condition check - handlers read from localStorage directly
+    // and are idempotent, so safe to call even if already selected
     category.subcategories.forEach((type) => {
-      if (!selectedTypes.includes(type)) {
-        handleQuoteTypeSelect(type);
-      }
+      handleQuoteTypeSelect(type);
     });
   };
 
@@ -60,10 +60,10 @@ export const QuotesModalContent: React.FC<QuotesModalContentProps> = ({
     const category = CATEGORIES.find((c) => c.id === categoryId);
     if (!category) return;
 
+    // Remove condition check - handlers read from localStorage directly
+    // and are idempotent, so safe to call even if already deselected
     category.subcategories.forEach((type) => {
-      if (selectedTypes.includes(type)) {
-        handleQuoteTypeRemove(type);
-      }
+      handleQuoteTypeRemove(type);
     });
   };
 
@@ -151,7 +151,7 @@ export const QuotesModalContent: React.FC<QuotesModalContentProps> = ({
                           ${
                             allSelected
                               ? 'bg-indigo-600/10 text-indigo-300/40 border-indigo-600/20 cursor-not-allowed'
-                              : 'bg-indigo-600/20 text-indigo-300 hover:bg-indigo-600/30 active:scale-95 border-indigo-600/30'
+                              : 'bg-indigo-600/40 text-indigo-200 hover:bg-indigo-600/50 hover:text-white active:scale-95 border-indigo-600/50'
                           }`}
                       >
                         Select All
