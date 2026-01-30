@@ -1,6 +1,6 @@
 import { useSearchParams } from 'react-router-dom';
 import { QuoteProviderProps } from '../components/QuoteProvider.tsx';
-import { ButtonsContainer } from '../components/ShopRef.tsx';
+import { ShareButton } from '../components/ShopRef.tsx';
 import { useCallback, useLayoutEffect, useRef, useState } from 'react';
 import {
   getQuoteById,
@@ -17,6 +17,8 @@ import {
 } from '@/utils/localStorage.ts';
 import { randomElement } from '@/utils/functions.ts';
 import { QuotesModalContent } from '@/components/QuotesModalContent.tsx';
+import { ChatCarousel } from '@/components/ChatCarousel.tsx';
+import { ChevronRight } from 'lucide-react';
 
 const quoteTypesNameLocalStorageKey = 'quoteTypes';
 
@@ -88,17 +90,52 @@ export const DailyQuotePage = () => {
     [setSearchParams]
   );
 
-  return (
-    <div ref={ref}>
-      <QuoteProviderProps quote={currentQuote} />
+  const getNextQuote = useCallback(() => {
+    getRandomQuote(quotes);
+  }, [quotes, getRandomQuote]);
 
-      <Button
-        onClick={() => setQuotesModalOpen(true)}
-        className="capitalize absolute bottom-[200px] md:bottom-[200px] hover:bg-neutral-700"
+  return (
+    <div ref={ref} className="h-screen overflow-y-auto overflow-x-hidden">
+      {/* Top section - Quote - calc accounts for navbar (60px) */}
+      <section
+        className="flex flex-col items-center justify-center px-4 relative"
+        style={{ height: 'calc(50vh - 30px)' }}
       >
-        {' '}
-        Select your inspiration{' '}
-      </Button>
+        <div className="flex-1 flex items-center justify-center w-full">
+          <QuoteProviderProps quote={currentQuote} />
+        </div>
+
+        {/* Share button - visible on mobile */}
+        <div className="absolute top-16 right-4">
+          <ShareButton />
+        </div>
+
+        {/* Navigation buttons */}
+        <div className="absolute bottom-6 left-0 right-0 flex items-center justify-center gap-3 px-4">
+          <Button
+            onClick={() => setQuotesModalOpen(true)}
+            className="capitalize bg-white/5 hover:bg-white/10 text-white border border-white/20 text-sm px-5 py-2 h-9 rounded-full"
+          >
+            See more
+          </Button>
+
+          <Button
+            onClick={getNextQuote}
+            variant="ghost"
+            size="icon"
+            className="text-white hover:bg-white/10 rounded-full h-9 w-9"
+          >
+            <ChevronRight className="h-5 w-5" />
+          </Button>
+        </div>
+      </section>
+
+      <section
+        className="py-6 pb-20 w-full max-w-full"
+        style={{ minHeight: 'calc(50vh - 30px)' }}
+      >
+        <ChatCarousel />
+      </section>
 
       <QuotesModal open={quotesModalOpen} onOpenChange={setQuotesModalOpen}>
         <QuotesModalContent
@@ -107,8 +144,6 @@ export const DailyQuotePage = () => {
           selectedTypes={selectedTypes}
         />
       </QuotesModal>
-
-      <ButtonsContainer onNextQuote={() => getRandomQuote(quotes)} />
     </div>
   );
 };

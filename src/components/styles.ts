@@ -40,4 +40,5 @@ export const buttonStyles = {
 export const COLORS = {
   primary: '#ffffff',
   gold: '#e6b424',
+  active: '#7c3aed', // violet-600 - ciemny fioletowy
 };

@@ -6,6 +6,7 @@ import {
   getGreetingMessageForCoach,
 } from '@/utils/chatHelpers.ts';
 import { askByApiCall } from '@/utils/api/chat.ts';
+import { getQuoteTypeName } from '@/utils/quotes.ts';
 
 interface ChatWindowProps {
   type: QuoteType;
@@ -75,7 +76,7 @@ export const ChatWindow: React.FC<ChatWindowProps> = ({ type }) => {
   const suggestions = getGreetingCustomerMessageSuggestions(type);
 
   return (
-    <div className="max-w-xl flex flex-col bg-[#2B2B2B] absolute top-[60px] min-h-[calc(100vh-60px)] left-0 sm:left-1/2 sm:transform sm:-translate-x-1/2 min-w-[100%] sm:min-w-[500px] sm:max-w-[500px] shadow-lg rounded-lg">
+    <div className="max-w-xl flex flex-col bg-gradient-to-br from-gray-800 via-gray-900 to-black absolute top-[60px] min-h-[calc(100vh-60px)] left-0 sm:left-1/2 sm:transform sm:-translate-x-1/2 min-w-[100%] sm:min-w-[500px] sm:max-w-[500px] shadow-lg rounded-lg">
       <div className="min-w-full pt-6 pb-3 text-white text-lg font-semibold flex items-center space-x-4 relative">
         <Link to={`/pages/chat`}>
           <button className="text-white px-3 py-1 rounded absolute left-0 top-5">
@@ -83,7 +84,7 @@ export const ChatWindow: React.FC<ChatWindowProps> = ({ type }) => {
           </button>
         </Link>
         <span className="text-center w-full pl-10">
-          Chatting with {type} coach
+          Chatting with {getQuoteTypeName(type)} coach
         </span>
       </div>
 
@@ -123,7 +124,7 @@ export const ChatWindow: React.FC<ChatWindowProps> = ({ type }) => {
         </div>
       )}
 
-      <div className="p-4 bg-[#2B2B2B] text-white border-t border-black flex items-center space-x-2 mb-[80px] ">
+      <div className="p-4 bg-gradient-to-br from-gray-800 via-gray-900 to-black text-white border-t border-white/10 flex items-center space-x-2 mb-[80px]">
         <input
           type="text"
           className="flex-1 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 "
