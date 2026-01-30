@@ -114,7 +114,7 @@ export const DailyQuotePage = () => {
         <div className="absolute bottom-6 left-0 right-0 flex items-center justify-center gap-3 px-4">
           <Button
             onClick={() => setQuotesModalOpen(true)}
-            className="capitalize bg-white/5 hover:bg-white/10 text-white border border-white/20 text-sm px-5 py-2 h-9 rounded-full"
+            className="capitalize bg-transparent hover:bg-transparent text-[#8B8DFF] border-none text-sm px-3 py-2 h-9 font-medium flex items-center gap-1.5"
           >
             See more
           </Button>
@@ -123,7 +123,7 @@ export const DailyQuotePage = () => {
             onClick={getNextQuote}
             variant="ghost"
             size="icon"
-            className="text-white hover:bg-white/10 rounded-full h-9 w-9"
+            className="text-[#8B8DFF] hover:bg-white/10 rounded-full h-9 w-9"
           >
             <ChevronRight className="h-5 w-5" />
           </Button>

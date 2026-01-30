@@ -180,11 +180,11 @@ export const QuotesModalContent: React.FC<QuotesModalContentProps> = ({
                             key={type}
                             onClick={() => handleSubcategoryToggle(type)}
                             className={`
-                              min-h-[44px] px-3 py-2 rounded-lg text-sm font-medium
+                              min-h-[44px] px-3 py-2 rounded-[14px] text-sm font-medium
                               transition-all duration-150 active:scale-95
                               ${
                                 isSelected
-                                  ? 'bg-indigo-600 text-white shadow-md'
+                                  ? 'bg-[rgba(139,141,255,0.14)] text-[#8B8DFF] shadow-[0_0_16px_rgba(139,141,255,0.35)]'
                                   : 'bg-white/10 text-white/90 hover:bg-white/20'
                               }
                             `}

@@ -2,7 +2,7 @@ import { CiShoppingBasket, CiShare2 } from 'react-icons/ci';
 import { LiaRandomSolid } from 'react-icons/lia';
 import { FC, useState } from 'react';
 import { Tooltip } from 'react-tooltip';
-import { buttonClass, COLORS } from './styles.ts';
+import { buttonClass, shareButtonClass, COLORS } from './styles.ts';
 
 const redirectUrl = 'https://moxieimpact.com/pages/qr-apparel';
 
@@ -57,11 +57,11 @@ export const ShareButton = () => {
   };
 
   return (
-    <button onClick={onClick} className={`${buttonClass} share`}>
+    <button onClick={onClick} className={`${shareButtonClass} share`}>
       <Tooltip anchorSelect=".share" style={{ fontSize: '0.4em' }} place="top">
         {tooltipText}
       </Tooltip>
-      <CiShare2 style={{ color: COLORS.primary }} />
+      <CiShare2 size={20} style={{ color: COLORS.primary }} />
     </button>
   );
 };

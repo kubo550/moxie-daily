@@ -15,30 +15,25 @@ export const buttonStyle = {
 } as const;
 
 export const buttonClass = `
-  w-[60px] h-[60px]
+  w-[48px] h-[48px]
   rounded-full
-  bg-neutral-700
-  hover:bg-neutral-700/10
-  active:scale-110
   cursor-pointer
   transition duration-300
   flex items-center justify-center
   text-white
-  shadow-xl
-  backdrop-blur-[10px]
+  active:scale-95
 `.trim();
 
-export const buttonStyles = {
-  ...buttonStyle,
-  display: 'flex',
-  justifyContent: 'center',
-  alignItems: 'center',
-  width: '60px',
-  height: '60px',
-} as const;
+export const shareButtonClass = `
+  ${buttonClass}
+  bg-[linear-gradient(135deg,rgba(255,255,255,0.10),rgba(255,255,255,0.04))]
+  shadow-[0_0_24px_rgba(255,255,255,0.06),0_8px_32px_rgba(0,0,0,0.3)]
+  backdrop-blur-[12px]
+  border border-white/[0.08]
+  hover:bg-[linear-gradient(135deg,rgba(255,255,255,0.14),rgba(255,255,255,0.06))]
+`.trim();
 
 export const COLORS = {
   primary: '#ffffff',
-  gold: '#e6b424',
-  active: '#7c3aed', // violet-600 - ciemny fioletowy
+  active: '#8B8DFF',
 };

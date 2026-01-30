@@ -2,7 +2,6 @@ import { Link } from 'react-router-dom';
 import { QuoteType } from '@/types/QuoteType.ts';
 import { getQuoteTypeName } from '@/utils/quotes.ts';
 import { getBackgroundImage } from '@/types/typesBacgroundImages.ts';
-import { COLORS } from '@/components/styles.ts';
 
 type Coach = {
   id: string;
@@ -68,7 +67,7 @@ export const ChatList = () => {
                 alt={coach.name}
                 className="w-14 h-14 rounded-full mr-4 object-cover"
               />
-              <div className="flex-1">
+              <div className="flex-1 text-left">
                 <p className="font-semibold text-base mb-1">{coach.name}</p>
                 <p className="text-sm text-gray-300">{coach.description}</p>
               </div>
