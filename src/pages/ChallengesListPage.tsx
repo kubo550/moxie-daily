@@ -1,7 +1,9 @@
 import { CHALLENGES } from '@/config/challenges.ts';
-import { getBackgroundImage } from '@/types/typesBacgroundImages.ts';
 import { useState } from 'react';
-import { getFromLocalStorage, setToLocalStorage } from '@/utils/localStorage.ts';
+import {
+  getFromLocalStorage,
+  setToLocalStorage,
+} from '@/utils/localStorage.ts';
 import { Check } from 'lucide-react';
 
 const COMPLETED_CHALLENGES_KEY = 'completedChallenges';
@@ -13,10 +15,16 @@ type CompletedChallenges = {
 
 export const ChallengesListPage = () => {
   const today = new Date().toISOString().split('T')[0];
-  const savedCompleted = getFromLocalStorage<CompletedChallenges>(COMPLETED_CHALLENGES_KEY);
+  const savedCompleted = getFromLocalStorage<CompletedChallenges>(
+    COMPLETED_CHALLENGES_KEY
+  );
 
   const [completed, setCompleted] = useState<Set<string>>(
-    new Set(savedCompleted && savedCompleted.date === today ? savedCompleted.challengeIds : [])
+    new Set(
+      savedCompleted && savedCompleted.date === today
+        ? savedCompleted.challengeIds
+        : []
+    )
   );
 
   const toggleChallenge = (challengeId: string) => {
@@ -71,7 +79,9 @@ export const ChallengesListPage = () => {
 
                   {/* Content */}
                   <div className="flex-1">
-                    <p className={`font-semibold text-base mb-1 ${isCompleted ? 'line-through' : ''}`}>
+                    <p
+                      className={`font-semibold text-base mb-1 ${isCompleted ? 'line-through' : ''}`}
+                    >
                       {challenge.title}
                     </p>
                     <p className="text-sm text-gray-300">
@@ -87,8 +97,13 @@ export const ChallengesListPage = () => {
         {/* Progress indicator */}
         <div className="mt-8 p-6 bg-gradient-to-br from-blue-500/10 to-purple-500/10 border border-blue-500/20 rounded-xl">
           <p className="text-center text-white text-sm">
-            <span className="text-2xl font-bold text-blue-400">{completed.size}</span>
-            <span className="text-gray-400"> / {CHALLENGES.length} completed today</span>
+            <span className="text-2xl font-bold text-blue-400">
+              {completed.size}
+            </span>
+            <span className="text-gray-400">
+              {' '}
+              / {CHALLENGES.length} completed today
+            </span>
           </p>
           {completed.size === CHALLENGES.length && (
             <p className="text-center text-green-400 text-xs mt-2">
