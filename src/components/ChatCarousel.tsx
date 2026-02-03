@@ -1,51 +1,12 @@
 import { Link } from 'react-router-dom';
-import { QuoteType } from '@/types/QuoteType.ts';
 import { getBackgroundImage } from '@/types/typesBacgroundImages.ts';
 import { motion } from 'framer-motion';
-
-type ChatCoach = {
-  type: QuoteType;
-  name: string;
-  description: string;
-};
-
-const CHAT_COACHES: ChatCoach[] = [
-  {
-    type: QuoteType.motivation,
-    name: 'Motivation',
-    description: 'Stay focused and driven',
-  },
-  {
-    type: QuoteType.affirmation,
-    name: 'Affirmation',
-    description: 'Build confidence and self-esteem',
-  },
-  {
-    type: QuoteType.devotional,
-    name: 'Devotional',
-    description: 'Daily devotionals',
-  },
-  {
-    type: QuoteType.anxiety_relief,
-    name: 'Anxiety Relief',
-    description: 'Find peace and calm',
-  },
-  {
-    type: QuoteType.build_confidence,
-    name: 'Build Confidence',
-    description: 'Boost your self-worth',
-  },
-  {
-    type: QuoteType.meditation,
-    name: 'Meditation',
-    description: 'Mindfulness and inner peace',
-  },
-];
+import { COACHES } from '@/config/coaches.ts';
 
 export const ChatCarousel = () => {
   return (
     <div className="w-screen max-w-screen px-4">
-      <h2 className="text-lg font-bold text-white mb-4">
+      <h2 className="text-lg font-bold text-white mb-4 text-left md:text-center">
         AI Coaches
       </h2>
 
@@ -57,23 +18,20 @@ export const ChatCarousel = () => {
           scrollBehavior: 'smooth',
         }}
       >
-        {CHAT_COACHES.map((coach, index) => (
+        {COACHES.map((coach, index) => (
           <motion.div
-            key={coach.type}
+            key={coach.id}
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: index * 0.1 }}
             className="flex-shrink-0 snap-start"
             style={{ width: '130px' }}
           >
-            <Link
-              to={`/pages/chat/${coach.type}`}
-              className="block w-full group"
-            >
+            <Link to={`/pages/chat/${coach.id}`} className="block w-full group">
               {/* Image container */}
               <div className="relative w-[130px] h-[130px] rounded-lg overflow-hidden mb-2 bg-gray-800 transition-transform active:scale-95">
                 <img
-                  src={getBackgroundImage(coach.type)}
+                  src={getBackgroundImage(coach.id)}
                   alt={coach.name}
                   className="w-full h-full object-cover"
                   loading="lazy"

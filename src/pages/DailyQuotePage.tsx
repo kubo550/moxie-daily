@@ -123,7 +123,7 @@ export const DailyQuotePage = () => {
             onClick={getNextQuote}
             variant="ghost"
             size="icon"
-            className="text-[#8B8DFF] hover:bg-white/10 rounded-full h-9 w-9"
+            className="text-[#8B8DFF] hover:bg-white/10 rounded-full h-9 w-1"
           >
             <ChevronRight className="h-5 w-5" />
           </Button>

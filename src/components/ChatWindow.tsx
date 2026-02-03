@@ -80,7 +80,7 @@ export const ChatWindow: React.FC<ChatWindowProps> = ({ type }) => {
       <div className="min-w-full pt-6 pb-3 text-white text-lg font-semibold flex items-center space-x-4 relative">
         <Link to={`/pages/chat`}>
           <button className="text-white px-3 py-1 rounded absolute left-0 top-5">
-            ← Back
+            ←
           </button>
         </Link>
         <span className="text-center w-full pl-10">
