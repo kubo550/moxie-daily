@@ -6,7 +6,9 @@ import { FooterNavbar } from '@/components/FooterNavbar.tsx';
 import { AboutMePage } from '@/pages/AboutMePage.tsx';
 import { ChatListPage } from '@/pages/ChatListPage.tsx';
 import { ChatPage } from '@/pages/ChatPage.tsx';
-import { ImmediateSupportPage } from '@/pages/ImmediateSupportPage.tsx';
+import { ChallengesListPage } from '@/pages/ChallengesListPage.tsx';
+import { QuickSupportPage } from '@/pages/QuickSupportPage.tsx';
+import { CrisisResourcesFAB } from '@/components/CrisisResourcesFAB.tsx';
 
 const App = () => {
   return (
@@ -21,9 +23,11 @@ const App = () => {
           <Route path="/pages/chat" element={<ChatListPage />} />
           <Route path="/pages/chat/:type" element={<ChatPage />} />
           <Route path="/pages/about" element={<AboutMePage />} />
-          <Route path="/pages/support" element={<ImmediateSupportPage />} />
+          <Route path="/pages/challenges" element={<ChallengesListPage />} />
+          <Route path="/pages/support/:type" element={<QuickSupportPage />} />
         </Routes>
         <FooterNavbar />
+        <CrisisResourcesFAB />
       </Router>
     </>
   );

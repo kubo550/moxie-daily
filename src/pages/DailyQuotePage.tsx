@@ -18,6 +18,8 @@ import {
 import { randomElement } from '@/utils/functions.ts';
 import { QuotesModalContent } from '@/components/QuotesModalContent.tsx';
 import { ChatCarousel } from '@/components/ChatCarousel.tsx';
+import { QuickSupportCarousel } from '@/components/QuickSupportCarousel.tsx';
+import { DailyChallengesCarousel } from '@/components/DailyChallengesCarousel.tsx';
 import { ChevronRight } from 'lucide-react';
 
 const quoteTypesNameLocalStorageKey = 'quoteTypes';
@@ -131,10 +133,12 @@ export const DailyQuotePage = () => {
       </section>
 
       <section
-        className="py-6 pb-20 w-full max-w-full"
+        className="py-6 pb-20 w-full max-w-full space-y-8"
         style={{ minHeight: 'calc(50vh - 30px)' }}
       >
         <ChatCarousel />
+        <QuickSupportCarousel />
+        <DailyChallengesCarousel />
       </section>
 
       <QuotesModal open={quotesModalOpen} onOpenChange={setQuotesModalOpen}>

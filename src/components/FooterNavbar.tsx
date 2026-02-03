@@ -12,6 +12,8 @@ export const FooterNavbar = () => {
     return location.pathname.startsWith(path) ? COLORS.active : '#FFFFFF';
   };
 
+  const isOnChallengesPage = location.pathname === '/pages/challenges';
+
   return (
     <div className="fixed bottom-0 left-0 w-full bg-black text-white flex justify-around items-center py-3 z-50 h-[60px]">
       <NavLink
@@ -29,11 +31,16 @@ export const FooterNavbar = () => {
         <span className="mt-1">Chat</span>
       </NavLink>
       <NavLink
-        to="/pages/support"
-        className={`flex flex-col items-center text-xs active:scale-110 transition duration-200 mt-2`}
+        to="/pages/challenges"
+        className={`flex flex-col items-center text-xs active:scale-110 transition duration-200 mt-2 relative`}
       >
-        <FaLifeRing size={20} color={getActiveColor('/pages/support')} />
-        <span className="mt-1">Support</span>
+        <div className="relative">
+          <FaLifeRing size={20} color={getActiveColor('/pages/challenges')} />
+          {!isOnChallengesPage && (
+            <div className="absolute -top-0.5 -right-0.5 w-2 h-2 bg-blue-500 rounded-full"></div>
+          )}
+        </div>
+        <span className="mt-1">Challenges</span>
       </NavLink>
       <NavLink
         to="/pages/about"
