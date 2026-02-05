@@ -61,7 +61,7 @@ export const DailyChallengesCarousel = () => {
       </h2>
 
       <div
-        className="flex gap-3 overflow-x-auto pb-4 scrollbar-hide snap-x snap-mandatory touch-pan-x -mx-4 px-4"
+        className="flex gap-3 overflow-x-auto pb-4 scrollbar-hide snap-x snap-mandatory -mx-4 px-4"
         style={{
           WebkitOverflowScrolling: 'touch',
           scrollBehavior: 'smooth',
@@ -129,9 +129,6 @@ export const DailyChallengesCarousel = () => {
         .scrollbar-hide {
           -ms-overflow-style: none;
           scrollbar-width: none;
-        }
-        .touch-pan-x {
-          touch-action: pan-x;
         }
       `}</style>
     </div>
