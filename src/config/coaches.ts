@@ -94,7 +94,7 @@ export const COACHES: Coach[] = [
   },
   {
     id: QuoteType.discipline,
-    name: 'Disciplined',
+    name: 'Get Disciplined',
     description: 'Build unwavering discipline',
   },
 ];

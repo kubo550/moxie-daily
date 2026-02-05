@@ -9,30 +9,18 @@ import {
   getAvailableTypes,
 } from '../infrastructure/qoutes.ts';
 import { Button } from '@/components/ui/button.tsx';
-import QuotesModal from '@/components/QuotesModal.tsx';
 import { QuoteType } from '@/types/QuoteType.ts';
-import {
-  getFromLocalStorage,
-  setToLocalStorage,
-} from '@/utils/localStorage.ts';
 import { randomElement } from '@/utils/functions.ts';
-import { QuotesModalContent } from '@/components/QuotesModalContent.tsx';
 import { ChatCarousel } from '@/components/ChatCarousel.tsx';
 import { QuickSupportCarousel } from '@/components/QuickSupportCarousel.tsx';
 import { DailyChallengesCarousel } from '@/components/DailyChallengesCarousel.tsx';
 import { ChevronRight } from 'lucide-react';
 
-const quoteTypesNameLocalStorageKey = 'quoteTypes';
-
 export const DailyQuotePage = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const [currentQuote, setCurrentQuote] = useState<Quote | null>(null);
   const [quotes, setQuotes] = useState<Quote[]>([]);
-  const [quotesModalOpen, setQuotesModalOpen] = useState(false);
-  const [selectedTypes, setSelectedTypes] = useState<QuoteType[]>(
-    getFromLocalStorage<QuoteType[]>(quoteTypesNameLocalStorageKey) ||
-      getAvailableTypes()
-  );
+  const selectedTypes = getAvailableTypes();
 
   const fetchQuoteById = async (id: string) => {
     const quote = await getQuoteById(id);
@@ -55,32 +43,9 @@ export const DailyQuotePage = () => {
         getRandomQuote(quotesArr);
       }
     })();
-  }, [selectedTypes, searchParams]);
+  }, [searchParams]);
 
   const ref = useRef<HTMLDivElement | null>(null);
-
-  const handleQuoteTypeSelect = useCallback((type: QuoteType) => {
-    const prevSavedQuoteTypes =
-      getFromLocalStorage<QuoteType[]>(quoteTypesNameLocalStorageKey) || [];
-    const filteredQuoteTypes = prevSavedQuoteTypes.filter(
-      (quoteType) => quoteType !== type
-    );
-    const newFilteredQuoteTypes = [...filteredQuoteTypes, type];
-
-    setToLocalStorage(quoteTypesNameLocalStorageKey, newFilteredQuoteTypes);
-    setSelectedTypes(newFilteredQuoteTypes);
-  }, []);
-
-  const handleQuoteTypeRemove = useCallback((type: QuoteType) => {
-    const prevSavedQuoteTypes =
-      getFromLocalStorage<QuoteType[]>(quoteTypesNameLocalStorageKey) || [];
-    const filteredQuoteTypes = prevSavedQuoteTypes.filter(
-      (quoteType) => quoteType !== type
-    );
-
-    setToLocalStorage(quoteTypesNameLocalStorageKey, filteredQuoteTypes);
-    setSelectedTypes(filteredQuoteTypes);
-  }, []);
 
   const getRandomQuote = useCallback(
     (quotesArr: Quote[]) => {
@@ -112,20 +77,13 @@ export const DailyQuotePage = () => {
           <ShareButton />
         </div>
 
-        {/* Navigation buttons */}
-        <div className="absolute bottom-6 left-0 right-0 flex items-center justify-center gap-3 px-4">
-          <Button
-            onClick={() => setQuotesModalOpen(true)}
-            className="capitalize bg-transparent hover:bg-transparent text-[#8B8DFF] border-none text-sm px-3 py-2 h-9 font-medium flex items-center gap-1.5"
-          >
-            See more
-          </Button>
-
+        {/* Navigation button */}
+        <div className="absolute bottom-6 left-0 right-0 flex items-center justify-center px-4">
           <Button
             onClick={getNextQuote}
             variant="ghost"
             size="icon"
-            className="text-[#8B8DFF] hover:bg-white/10 rounded-full h-9 w-1"
+            className="text-[#8B8DFF] hover:bg-white/10 rounded-full h-9 w-9"
           >
             <ChevronRight className="h-5 w-5" />
           </Button>
@@ -140,14 +98,6 @@ export const DailyQuotePage = () => {
         <QuickSupportCarousel />
         <DailyChallengesCarousel />
       </section>
-
-      <QuotesModal open={quotesModalOpen} onOpenChange={setQuotesModalOpen}>
-        <QuotesModalContent
-          handleQuoteTypeRemove={handleQuoteTypeRemove}
-          handleQuoteTypeSelect={handleQuoteTypeSelect}
-          selectedTypes={selectedTypes}
-        />
-      </QuotesModal>
     </div>
   );
 };
