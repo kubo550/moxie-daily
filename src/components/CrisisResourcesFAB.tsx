@@ -1,9 +1,16 @@
 import { useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import { HeartHandshake } from 'lucide-react';
 import { CrisisBottomSheet } from './CrisisBottomSheet.tsx';
 
 export const CrisisResourcesFAB = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const location = useLocation();
+
+  // Hide FAB on chat pages to avoid overlap with send button
+  if (location.pathname.startsWith('/pages/chat/')) {
+    return null;
+  }
 
   return (
     <>
