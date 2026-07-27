@@ -2,7 +2,7 @@ import * as React from 'react';
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { getQuoteTypeName } from '@/utils/quotes.ts';
-import { CATEGORIES } from '@/infrastructure/qoutes.ts';
+import { getVisibleCategories } from '@/infrastructure/qoutes.ts';
 import { QuoteType } from '@/types/QuoteType.ts';
 import { getCategoryImage } from '@/types/typesBacgroundImages.ts';
 
@@ -18,13 +18,14 @@ export const QuotesModalContent: React.FC<QuotesModalContentProps> = ({
   handleQuoteTypeRemove,
 }) => {
   const [expandedCategory, setExpandedCategory] = useState<string | null>(null);
+  const categories = getVisibleCategories();
 
   const toggleCategory = (categoryId: string) => {
     setExpandedCategory(expandedCategory === categoryId ? null : categoryId);
   };
 
   const getSelectedCountInCategory = (categoryId: string) => {
-    const category = CATEGORIES.find((c) => c.id === categoryId);
+    const category = categories.find((c) => c.id === categoryId);
     if (!category) return 0;
     return category.subcategories.filter((type) =>
       selectedTypes.includes(type)
@@ -32,7 +33,7 @@ export const QuotesModalContent: React.FC<QuotesModalContentProps> = ({
   };
 
   const areAllSelectedInCategory = (categoryId: string) => {
-    const category = CATEGORIES.find((c) => c.id === categoryId);
+    const category = categories.find((c) => c.id === categoryId);
     if (!category) return false;
     return category.subcategories.every((type) => selectedTypes.includes(type));
   };
@@ -46,7 +47,7 @@ export const QuotesModalContent: React.FC<QuotesModalContentProps> = ({
   };
 
   const handleSelectAllInCategory = (categoryId: string) => {
-    const category = CATEGORIES.find((c) => c.id === categoryId);
+    const category = categories.find((c) => c.id === categoryId);
     if (!category) return;
 
     // Remove condition check - handlers read from localStorage directly
@@ -57,7 +58,7 @@ export const QuotesModalContent: React.FC<QuotesModalContentProps> = ({
   };
 
   const handleDeselectAllInCategory = (categoryId: string) => {
-    const category = CATEGORIES.find((c) => c.id === categoryId);
+    const category = categories.find((c) => c.id === categoryId);
     if (!category) return;
 
     // Remove condition check - handlers read from localStorage directly
@@ -69,7 +70,7 @@ export const QuotesModalContent: React.FC<QuotesModalContentProps> = ({
 
   return (
     <div className="flex flex-col gap-3 py-4">
-      {CATEGORIES.map((category) => {
+      {categories.map((category) => {
         const isExpanded = expandedCategory === category.id;
         const selectedCount = getSelectedCountInCategory(category.id);
         const allSelected = areAllSelectedInCategory(category.id);

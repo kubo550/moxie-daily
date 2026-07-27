@@ -1,4 +1,10 @@
-import { FaHome, FaCommentDots, FaInfoCircle, FaLifeRing } from 'react-icons/fa';
+import {
+  FaHome,
+  FaCommentDots,
+  FaInfoCircle,
+  FaLifeRing,
+  FaHandsHelping,
+} from 'react-icons/fa';
 import { NavLink, useLocation } from 'react-router-dom';
 import { COLORS } from '@/components/styles.ts';
 
@@ -41,6 +47,13 @@ export const FooterNavbar = () => {
           )}
         </div>
         <span className="mt-1">Challenges</span>
+      </NavLink>
+      <NavLink
+        to="/pages/recovery"
+        className={`flex flex-col items-center text-xs active:scale-110 transition duration-200 mt-2`}
+      >
+        <FaHandsHelping size={20} color={getActiveColor('/pages/recovery')} />
+        <span className="mt-1">Recovery</span>
       </NavLink>
       <NavLink
         to="/pages/about"

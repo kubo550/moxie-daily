@@ -9,11 +9,8 @@ import breakups from '/types/breakups.jpg';
 import build_confidence from '/types/build_confidence.jpg';
 import devotional from '/types/devotional.jpg';
 import discipline from '/types/discipline.jpg';
-import drink_less from '/types/drink_less.jpg';
 import focus from '/types/focus.jpg';
-import hard_times from '/types/hard_times.jpg';
 import law_of_attraction from '/types/law_of_attraction.jpg';
-import lose_weight from '/types/lose_weight.jpg';
 import love_yourself from '/types/love_yourself.jpg';
 import marriage from '/types/marriage.jpg';
 import meditation from '/types/meditation.jpg';
@@ -27,6 +24,41 @@ import relationships from '/types/relationships.jpg';
 import success_mindset from '/types/success_mindset.jpg';
 import toxic_relationships from '/types/toxic_relationships.jpg';
 
+// CC0 replacements for images that were unusable in a mental health / recovery
+// context - see public/types/CREDITS.md.
+import candle from '/types/candle.jpg';
+import mountain_peak from '/types/mountain_peak.jpg';
+import path_valley from '/types/path_valley.jpg';
+import still_water from '/types/still_water.jpg';
+import sunny_path from '/types/sunny_path.jpg';
+
+/**
+ * Image files by name, so a coach card can pick its own image instead of
+ * inheriting whatever the quote type happens to be mapped to. Changing one
+ * quote type's image used to change up to 6 cards at once.
+ */
+export const TYPE_IMAGES = {
+  affirmation,
+  anxiety_relief,
+  build_confidence,
+  candle,
+  devotional,
+  discipline,
+  focus,
+  love_yourself,
+  meditation,
+  mental_health,
+  motivation,
+  mountain_peak,
+  path_valley,
+  personal_growth,
+  positive_mindset,
+  relationships,
+  still_water,
+  success_mindset,
+  sunny_path,
+} as const;
+
 // Category images mapping - using existing images for main categories
 const categoryImages: Record<string, string> = {
   mental_health: mental_health,
@@ -36,7 +68,7 @@ const categoryImages: Record<string, string> = {
   wellness: meditation,
   spiritual: devotional,
   business: success_mindset,
-  recovery: hard_times,
+  recovery: still_water,
   relationships: relationships,
   gratitude: positive_mindset,
   first_responders: affirmation,
@@ -56,11 +88,11 @@ const backgroundImages: Record<QuoteType, string> = {
   // Mental Health & Emotional Support
   [QuoteType.anxiety_relief]: anxiety_relief,
   [QuoteType.stress_overwhelm]: mental_health,
-  [QuoteType.hard_times]: hard_times,
+  [QuoteType.hard_times]: still_water,
   [QuoteType.mental_health]: mental_health,
   [QuoteType.calm_mind]: meditation,
   [QuoteType.emotional_reset]: mental_health,
-  [QuoteType.overcoming_fear]: hard_times,
+  [QuoteType.overcoming_fear]: mountain_peak,
   [QuoteType.not_alone]: affirmation,
 
   // Confidence, Identity & Self-Worth
@@ -86,15 +118,15 @@ const backgroundImages: Record<QuoteType, string> = {
   [QuoteType.game_day_focus]: focus,
   [QuoteType.pre_workout_motivation]: motivation,
   [QuoteType.mental_toughness]: discipline,
-  [QuoteType.bounce_back]: hard_times,
+  [QuoteType.bounce_back]: mountain_peak,
   [QuoteType.pressure_performance]: focus,
 
   // Wellness, Mindfulness & Inner Peace
   [QuoteType.meditation]: meditation,
   [QuoteType.breathe_reset]: meditation,
-  [QuoteType.healthy_habits]: lose_weight,
+  [QuoteType.healthy_habits]: path_valley,
   [QuoteType.mind_body_wellness]: meditation,
-  [QuoteType.lose_weight]: lose_weight,
+  [QuoteType.lose_weight]: path_valley,
   [QuoteType.energy_renewal]: positive_mindset,
 
   // Spiritual & Faith-Based
@@ -114,9 +146,9 @@ const backgroundImages: Record<QuoteType, string> = {
   [QuoteType.resilience_work]: discipline,
 
   // Addiction, Recovery & Overcoming
-  [QuoteType.recovery_strength]: hard_times,
+  [QuoteType.recovery_strength]: personal_growth,
   [QuoteType.one_day_at_time]: affirmation,
-  [QuoteType.freedom_addiction]: hard_times,
+  [QuoteType.freedom_addiction]: sunny_path,
   [QuoteType.new_beginnings]: personal_growth,
   [QuoteType.stay_the_course]: discipline,
   [QuoteType.rebuild_life]: personal_growth,
@@ -147,7 +179,7 @@ const backgroundImages: Record<QuoteType, string> = {
   [QuoteType.attract_love]: attract_love,
   [QuoteType.attract_money]: attract_money,
   [QuoteType.breakups]: breakups,
-  [QuoteType.drink_less]: drink_less,
+  [QuoteType.drink_less]: still_water,
   [QuoteType.law_of_attraction]: law_of_attraction,
   [QuoteType.marriage]: marriage,
   [QuoteType.phone_addiction]: phone_addiction,

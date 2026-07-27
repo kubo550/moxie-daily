@@ -6,7 +6,9 @@ import {
   getGreetingMessageForCoach,
 } from '@/utils/chatHelpers.ts';
 import { askByApiCall } from '@/utils/api/chat.ts';
-import { getQuoteTypeName } from '@/utils/quotes.ts';
+import { getCoachLabel } from '@/config/coaches.ts';
+import { CrisisBottomSheet } from '@/components/CrisisBottomSheet.tsx';
+import { HeartHandshake } from 'lucide-react';
 
 interface ChatWindowProps {
   type: QuoteType;
@@ -19,6 +21,7 @@ export const ChatWindow: React.FC<ChatWindowProps> = ({ type }) => {
   const [input, setInput] = useState('');
   const [isBotTyping, setIsBotTyping] = useState(false);
   const [isError, setIsError] = useState(false);
+  const [isCrisisSheetOpen, setIsCrisisSheetOpen] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement | null>(null);
 
   const sendMessage = async () => {
@@ -77,16 +80,33 @@ export const ChatWindow: React.FC<ChatWindowProps> = ({ type }) => {
 
   return (
     <div className="max-w-xl flex flex-col bg-gradient-to-br from-gray-800 via-gray-900 to-black absolute top-[60px] min-h-[calc(100vh-60px)] left-0 sm:left-1/2 sm:transform sm:-translate-x-1/2 min-w-[100%] sm:min-w-[500px] sm:max-w-[500px] shadow-lg rounded-lg">
-      <div className="min-w-full pt-6 pb-3 text-white text-lg font-semibold flex items-center space-x-4 relative">
-        <Link to={`/pages/chat`}>
-          <button className="text-white px-3 py-1 rounded absolute left-0 top-5">
-            ←
-          </button>
+      <div className="min-w-full pt-5 pb-3 px-2 text-white flex items-center gap-2">
+        <Link
+          to={`/pages/chat`}
+          aria-label="Back to coaches"
+          className="text-white text-lg px-2 py-1 rounded flex-shrink-0"
+        >
+          ←
         </Link>
-        <span className="text-center w-full pl-10">
-          Chatting with {getQuoteTypeName(type)} coach
+        <span className="flex-1 text-center text-base sm:text-lg font-semibold truncate">
+          Chatting with {getCoachLabel(type)}
         </span>
+        <button
+          onClick={() => setIsCrisisSheetOpen(true)}
+          aria-label="Get help now - crisis resources"
+          className="flex-shrink-0 flex items-center gap-1.5 px-2.5 py-2 rounded-full bg-gradient-to-br from-red-500/90 to-pink-500/90 hover:from-red-600 hover:to-pink-600 transition-all active:scale-95"
+        >
+          <HeartHandshake className="w-4 h-4 text-white" />
+          <span className="text-xs font-semibold text-white whitespace-nowrap">
+            Get Help Now
+          </span>
+        </button>
       </div>
+
+      <CrisisBottomSheet
+        isOpen={isCrisisSheetOpen}
+        onClose={() => setIsCrisisSheetOpen(false)}
+      />
 
       <div className="flex-1 overflow-y-auto p-4 space-y-2 min-w-full ">
         {messages.map((msg) => (

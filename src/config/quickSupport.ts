@@ -28,11 +28,11 @@ export const QUICK_SUPPORT_ITEMS: QuickSupportItem[] = [
   },
   {
     id: 'motivation',
-    title: 'Need a Push?',
-    subtitle: 'Get motivated now',
+    title: 'Need Encouragement?',
+    subtitle: 'A little motivation, when you need it',
     coachType: QuoteType.motivation,
-    emoji: '🚀',
-    color: 'from-orange-500/20 to-red-500/20',
+    emoji: '💛',
+    color: 'from-amber-500/20 to-orange-500/20',
   },
   {
     id: 'lonely',
@@ -68,10 +68,10 @@ export const QUICK_SUPPORT_ITEMS: QuickSupportItem[] = [
   },
   {
     id: 'unfocused',
-    title: 'Can\'t Focus?',
-    subtitle: 'Get locked in',
+    title: 'Mind Racing?',
+    subtitle: 'Find your focus',
     coachType: QuoteType.focus,
-    emoji: '🎯',
-    color: 'from-red-500/20 to-orange-500/20',
+    emoji: '🌀',
+    color: 'from-teal-500/20 to-blue-500/20',
   },
 ];

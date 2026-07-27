@@ -15,7 +15,7 @@ export const Navbar = () => (
         />
       </a>
       <p className="text-gray-400 text-xs sm:text-sm font-medium tracking-wide">
-        Refocus. Lock In. Take Action.
+        You&apos;re not alone. Help is here.
       </p>
     </div>
   </nav>

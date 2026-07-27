@@ -8,6 +8,7 @@ import { ChatListPage } from '@/pages/ChatListPage.tsx';
 import { ChatPage } from '@/pages/ChatPage.tsx';
 import { ChallengesListPage } from '@/pages/ChallengesListPage.tsx';
 import { QuickSupportPage } from '@/pages/QuickSupportPage.tsx';
+import { RecoverySupportPage } from '@/pages/RecoverySupportPage.tsx';
 import { CrisisResourcesFAB } from '@/components/CrisisResourcesFAB.tsx';
 
 const App = () => {
@@ -25,6 +26,7 @@ const App = () => {
           <Route path="/pages/about" element={<AboutMePage />} />
           <Route path="/pages/challenges" element={<ChallengesListPage />} />
           <Route path="/pages/support/:type" element={<QuickSupportPage />} />
+          <Route path="/pages/recovery" element={<RecoverySupportPage />} />
         </Routes>
         <FooterNavbar />
         <CrisisResourcesFAB />

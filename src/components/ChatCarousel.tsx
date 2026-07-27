@@ -1,9 +1,10 @@
 import { Link } from 'react-router-dom';
-import { getBackgroundImage } from '@/types/typesBacgroundImages.ts';
 import { motion } from 'framer-motion';
-import { COACHES } from '@/config/coaches.ts';
+import { getCoachImage, getVisibleCoaches } from '@/config/coaches.ts';
 
 export const ChatCarousel = () => {
+  const coaches = getVisibleCoaches();
+
   return (
     <div className="w-screen max-w-screen px-4">
       <h2 className="text-lg font-bold text-white mb-4 text-left md:text-center">
@@ -18,7 +19,7 @@ export const ChatCarousel = () => {
           scrollBehavior: 'smooth',
         }}
       >
-        {COACHES.map((coach, index) => (
+        {coaches.map((coach, index) => (
           <motion.div
             key={coach.id}
             initial={{ opacity: 0, x: 20 }}
@@ -31,7 +32,7 @@ export const ChatCarousel = () => {
               {/* Image container */}
               <div className="relative w-[130px] h-[130px] rounded-lg overflow-hidden mb-2 bg-gray-800 transition-transform active:scale-95">
                 <img
-                  src={getBackgroundImage(coach.id)}
+                  src={getCoachImage(coach)}
                   alt={coach.name}
                   className="w-full h-full object-cover"
                   loading="lazy"

@@ -2,6 +2,7 @@ import { randomElement } from '../utils/functions.ts';
 import { QuoteType } from '@/types/QuoteType.ts';
 import { CacheProvider } from '@/infrastructure/cacheProvider.ts';
 import { QuoteDBProvider } from '@/infrastructure/quoteDBProvider.ts';
+import { APP_CONFIG, isFaithQuoteType } from '@/config/appConfig.ts';
 
 export type Quote = {
   type: QuoteType;
@@ -199,8 +200,20 @@ export const CATEGORIES: Category[] = [
   },
 ];
 
+/**
+ * Categories with faith-gated types removed. Note that `hope_healing` stays in
+ * the Spiritual category either way - it backs the Depression Support coach.
+ */
+export const getVisibleCategories = (): Category[] =>
+  CATEGORIES.map((category) => ({
+    ...category,
+    subcategories: category.subcategories.filter(
+      (type) => !isFaithQuoteType(type) || APP_CONFIG.faithContentEnabled
+    ),
+  })).filter((category) => category.subcategories.length > 0);
+
 export const getAvailableTypes = () => {
-  return CATEGORIES.flatMap((category) => category.subcategories);
+  return getVisibleCategories().flatMap((category) => category.subcategories);
 };
 
 const fallbackQuotes = [

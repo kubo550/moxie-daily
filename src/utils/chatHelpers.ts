@@ -7,7 +7,7 @@ export const getGreetingMessageForCoach = (type: QuoteType) => {
     case QuoteType.devotional:
       return "Welcome. 🙏 Let's take a moment for reflection and spiritual encouragement. Are you open to a word of comfort today?";
     case QuoteType.motivation:
-      return "Hey! 🚀 You've got goals, and I've got the energy. Ready to fuel your day with some serious motivation?";
+      return "Hi. I'm here to help — whatever kind of day you're having. What's on your mind?";
     case QuoteType.anxiety_relief:
       return "Take a deep breath. You're safe here. 🌊 Let's work through what's weighing on your mind together.";
     case QuoteType.build_confidence:
@@ -17,9 +17,9 @@ export const getGreetingMessageForCoach = (type: QuoteType) => {
     case QuoteType.pre_workout_motivation:
       return "Let's go! 💥 Time to turn up the intensity and crush your workout. Ready to get after it?";
     case QuoteType.healthy_habits:
-      return "Your body is your temple. 🌱 Let's talk about building habits that make you feel amazing.";
+      return "Hi. Small steps count here — one day at a time. What would you like to take care of today?";
     case QuoteType.joyful_living:
-      return "Life is meant to be enjoyed! ☀️ Let's find more reasons to smile today.";
+      return "Hi. However today feels right now, it can shift. What's going on for you?";
     case QuoteType.productivity_boost:
       return "Time to get things done! ⚡ Let's maximize your productivity and crush your to-do list.";
     case QuoteType.forgiveness_letting_go:
@@ -67,9 +67,9 @@ export const getGreetingCustomerMessageSuggestions = (type: QuoteType) => {
       ];
     case QuoteType.motivation:
       return [
-        'Give me a reason to keep pushing.',
-        'I need some fire to start my day.',
+        'I need some encouragement today.',
         "Tell me I've got this – even if I don't feel it yet.",
+        "I'm having a hard time and don't know what to do.",
       ];
     case QuoteType.anxiety_relief:
       return [

@@ -5,7 +5,7 @@ import { QuoteType } from '@/types/QuoteType.ts';
 import { getRandomQuote } from '@/infrastructure/qoutes.ts';
 import { Button } from '@/components/ui/button.tsx';
 import { MessageCircle, Home } from 'lucide-react';
-import { getQuoteTypeName } from '@/utils/quotes.ts';
+import { getCoachLabel } from '@/config/coaches.ts';
 
 const BREATHING_ANIMATION_DURATION = 4;
 
@@ -29,7 +29,7 @@ export const QuickSupportPage = () => {
     setTimeout(() => setIsBreathing(false), BREATHING_ANIMATION_DURATION * 3 * 1000);
   };
 
-  const coachName = type ? getQuoteTypeName(type as QuoteType) : 'Support';
+  const coachLabel = type ? getCoachLabel(type as QuoteType) : 'a coach';
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-900 via-black to-gray-900 flex flex-col">
@@ -106,7 +106,7 @@ export const QuickSupportPage = () => {
           <Link to={`/pages/chat/${type}`} className="block w-full">
             <Button className="w-full bg-white/10 hover:bg-white/20 text-white border border-white/20 py-6 text-base font-medium rounded-xl justify-center gap-2">
               <MessageCircle className="w-5 h-5" />
-              Talk to {coachName} Coach
+              Talk to {coachLabel}
             </Button>
           </Link>
 
