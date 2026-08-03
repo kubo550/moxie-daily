@@ -1,7 +1,7 @@
 import logo from '../assets/logo.jpeg';
 
 export const Navbar = () => (
-  <nav className="flex fixed top-0 left-0 right-0 h-[60px] bg-black items-center justify-between px-4 shadow-md z-50">
+  <nav className="flex shrink-0 h-[60px] bg-black items-center justify-between px-4 shadow-md z-50">
     <div className="flex items-center ">
       <a
         href="https://moxieimpact.com/pages/qr-apparel"

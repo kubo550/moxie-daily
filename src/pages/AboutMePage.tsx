@@ -88,12 +88,12 @@ const renderContent = (content: string) => {
 
 export const AboutMePage = () => {
   return (
-    <div className="md:rounded-[15px] shadow-[0_8px_32px_rgba(0,0,0,0.37)] backdrop-blur-[15px] backdrop-contrast-90 backdrop-brightness-110 max-h-[80vh] overflow-hidden">
-      <div className="px-5 text-white max-w-md h-full overflow-y-auto">
+    <div className="min-h-full md:rounded-[15px] shadow-[0_8px_32px_rgba(0,0,0,0.37)] backdrop-blur-[15px] backdrop-contrast-90 backdrop-brightness-110">
+      <div className="px-5 text-white max-w-md mx-auto pb-20">
         <h1 className="text-2xl md:pt-8 font-bold mb-4 text-left pt-3 md:py-4 text-white">
           About Moxie
         </h1>
-        <div className="w-full no-scrollbar max-w-4xl text-justify h-[calc(100vh-300px)] md:h-[calc(100vh-410px)] lg:h-[calc(100vh-425px)] xl:h-[calc(100vh-407px)] overflow-y-auto pr-2">
+        <div className="w-full max-w-4xl text-justify pr-2">
           <section className="mb-8">
             <p className="text-lg leading-relaxed">
               A Bridge of Support. A Badge of Strength. A Daily Reminder That

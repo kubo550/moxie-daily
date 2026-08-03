@@ -62,21 +62,18 @@ export const DailyQuotePage = () => {
   }, [quotes, getRandomQuote]);
 
   return (
-    <div
-      ref={ref}
-      className="no-scrollbar h-screen overflow-y-auto overflow-x-hidden"
-    >
-      {/* Top section - Quote - calc accounts for navbar (60px) */}
+    <div ref={ref} className="min-h-full">
+      {/* Top section - Quote - half of the content area (viewport minus header/footer) */}
       <section
         className="flex flex-col items-center justify-center px-4 relative"
-        style={{ height: 'calc(50vh - 30px)' }}
+        style={{ height: 'calc(50dvh - 60px)' }}
       >
         <div className="flex-1 flex items-center justify-center w-full">
           <QuoteProviderProps quote={currentQuote} />
         </div>
 
         {/* Share button - visible on mobile */}
-        <div className="absolute top-16 right-4">
+        <div className="absolute top-4 right-4">
           <ShareButton />
         </div>
 
@@ -94,7 +91,7 @@ export const DailyQuotePage = () => {
       </section>
       <section
         className="py-6 pb-20 w-full max-w-full space-y-8"
-        style={{ minHeight: 'calc(50vh - 30px)' }}
+        style={{ minHeight: 'calc(50dvh - 60px)' }}
       >
         <ChatCarousel />
         <QuickSupportCarousel />

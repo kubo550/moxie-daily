@@ -13,25 +13,27 @@ import { CrisisResourcesFAB } from '@/components/CrisisResourcesFAB.tsx';
 
 const App = () => {
   return (
-    <>
+    <Router>
       <div className="fixed inset-0 bg-gradient-to-b from-black via-gray-900 to-black -z-10" />
 
-      <Navbar />
-      <Router>
-        <Routes>
-          <Route path="/" element={<DailyQuotePage />} />
-          <Route path="/:type" element={<DailyQuotePage />} />
-          <Route path="/pages/chat" element={<ChatListPage />} />
-          <Route path="/pages/chat/:type" element={<ChatPage />} />
-          <Route path="/pages/about" element={<AboutMePage />} />
-          <Route path="/pages/challenges" element={<ChallengesListPage />} />
-          <Route path="/pages/support/:type" element={<QuickSupportPage />} />
-          <Route path="/pages/recovery" element={<RecoverySupportPage />} />
-        </Routes>
+      <div className="flex lg:w-7xl h-[100dvh] flex-col overflow-hidden">
+        <Navbar />
+        <main className="no-scrollbar flex-1 min-h-0 overflow-y-auto overflow-x-hidden">
+          <Routes>
+            <Route path="/" element={<DailyQuotePage />} />
+            <Route path="/:type" element={<DailyQuotePage />} />
+            <Route path="/pages/chat" element={<ChatListPage />} />
+            <Route path="/pages/chat/:type" element={<ChatPage />} />
+            <Route path="/pages/about" element={<AboutMePage />} />
+            <Route path="/pages/challenges" element={<ChallengesListPage />} />
+            <Route path="/pages/support/:type" element={<QuickSupportPage />} />
+            <Route path="/pages/recovery" element={<RecoverySupportPage />} />
+          </Routes>
+        </main>
         <FooterNavbar />
-        <CrisisResourcesFAB />
-      </Router>
-    </>
+      </div>
+      <CrisisResourcesFAB />
+    </Router>
   );
 };
 
