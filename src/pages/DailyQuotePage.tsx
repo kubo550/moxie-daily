@@ -62,7 +62,10 @@ export const DailyQuotePage = () => {
   }, [quotes, getRandomQuote]);
 
   return (
-    <div ref={ref} className="h-screen overflow-y-auto overflow-x-hidden">
+    <div
+      ref={ref}
+      className="no-scrollbar h-screen overflow-y-auto overflow-x-hidden"
+    >
       {/* Top section - Quote - calc accounts for navbar (60px) */}
       <section
         className="flex flex-col items-center justify-center px-4 relative"
@@ -89,7 +92,6 @@ export const DailyQuotePage = () => {
           </Button>
         </div>
       </section>
-
       <section
         className="py-6 pb-20 w-full max-w-full space-y-8"
         style={{ minHeight: 'calc(50vh - 30px)' }}

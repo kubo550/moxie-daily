@@ -93,7 +93,7 @@ export const AboutMePage = () => {
         <h1 className="text-2xl md:pt-8 font-bold mb-4 text-left pt-3 md:py-4 text-white">
           About Moxie
         </h1>
-        <div className="w-full max-w-4xl text-justify h-[calc(100vh-300px)] md:h-[calc(100vh-410px)] lg:h-[calc(100vh-425px)] xl:h-[calc(100vh-407px)] overflow-y-auto pr-2 custom-scrollbar">
+        <div className="w-full no-scrollbar max-w-4xl text-justify h-[calc(100vh-300px)] md:h-[calc(100vh-410px)] lg:h-[calc(100vh-425px)] xl:h-[calc(100vh-407px)] overflow-y-auto pr-2">
           <section className="mb-8">
             <p className="text-lg leading-relaxed">
               A Bridge of Support. A Badge of Strength. A Daily Reminder That
