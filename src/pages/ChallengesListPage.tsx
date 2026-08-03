@@ -97,7 +97,7 @@ export const ChallengesListPage = () => {
   };
 
   return (
-    <div className="min-h-screen pt-[60px] pb-[80px]">
+    <div className="min-h-full pb-20">
       <div className="text-white px-4 py-6 max-w-2xl mx-auto">
         <h1 className="text-3xl md:text-4xl font-bold mb-2 text-left">
           Daily Challenges

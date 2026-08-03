@@ -32,9 +32,9 @@ export const QuickSupportPage = () => {
   const coachLabel = type ? getCoachLabel(type as QuoteType) : 'a coach';
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-900 via-black to-gray-900 flex flex-col">
+    <div className="min-h-full bg-gradient-to-b from-gray-900 via-black to-gray-900 flex flex-col">
       {/* Header */}
-      <div className="pt-16 px-4 pb-6 text-center">
+      <div className="pt-6 px-4 pb-6 text-center">
         <Link to="/" className="inline-block mb-4">
           <Home className="w-6 h-6 text-white/60 hover:text-white transition-colors" />
         </Link>
