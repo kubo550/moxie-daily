@@ -16,7 +16,7 @@ const App = () => {
     <Router>
       <div className="fixed inset-0 bg-gradient-to-b from-black via-gray-900 to-black -z-10" />
 
-      <div className="flex lg:w-7xl h-[100dvh] flex-col overflow-hidden">
+      <div className="flex w-full max-w-7xl h-[100dvh] flex-col overflow-hidden mx-auto">
         <Navbar />
         <main className="no-scrollbar flex-1 min-h-0 overflow-y-auto overflow-x-hidden">
           <Routes>
