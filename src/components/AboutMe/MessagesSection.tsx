@@ -1,7 +1,7 @@
 import { messages } from '@/config/about';
 import { cn } from '@/lib/utils';
 
-export default function MessagesSection({ className }: { className: string }) {
+export default function MessagesSection({ className = '' }: { className?: string }) {
   return (
     <section
       className={cn(

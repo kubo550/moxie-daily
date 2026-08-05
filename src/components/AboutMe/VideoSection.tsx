@@ -1,4 +1,4 @@
-export default function VideoSection({ className }: { className: string }) {
+export default function VideoSection({ className = '' }: { className?: string }) {
   return (
     <section className={className}>
       <h2 className="text-2xl font-semibold mb-4">Watch How Moxie Works</h2>

@@ -10,11 +10,7 @@ import {
 import { Separator } from '../ui/separator';
 import { AboutMeElement, aboutMeElements } from '@/config/about';
 
-export default function CollapsibleAboutSection({
-  className,
-}: {
-  className: string;
-}) {
+export default function CollapsibleAboutSection({ className = '' }: { className?: string }) {
   return (
     <div className={cn('flex flex-col mb-3', className)}>
       {aboutMeElements.map((element, i) => (
