@@ -10,6 +10,7 @@ import {
   setToLocalStorage,
 } from '@/utils/localStorage.ts';
 import { Check } from 'lucide-react';
+import HeaderSection from '@/components/Common/HeaderSection';
 
 const COMPLETED_CHALLENGES_KEY = 'completedChallenges';
 
@@ -99,13 +100,10 @@ export const ChallengesListPage = () => {
   return (
     <div className="min-h-full pb-20">
       <div className="text-white px-4 py-6 max-w-2xl mx-auto">
-        <h1 className="text-3xl md:text-4xl font-bold mb-2 text-left">
-          Daily Challenges
-        </h1>
-        <p className="text-gray-400 text-sm mb-6">
-          Small steps, big changes. Pick one - that&apos;s enough for today.
-        </p>
-
+        <HeaderSection
+          title="Daily Challenges"
+          desc="Small steps, big changes. Pick one - that's enough for today"
+        />
         <div className="space-y-6">
           {sections.map((section) => (
             <div key={section.group}>

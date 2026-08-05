@@ -1,14 +1,17 @@
 import CollapsibleAboutSection from '@/components/AboutMe/CollapsibleAboutSection';
-import HeaderSection from '@/components/AboutMe/HeaderSection';
 import MessagesSection from '@/components/AboutMe/MessagesSection';
 import VideoSection from '@/components/AboutMe/VideoSection';
+import HeaderSection from '@/components/Common/HeaderSection';
 import PageFooter from '@/components/Footer';
 
 export const AboutMePage = () => {
   return (
-    <main className="min-h-full flex flex-1 items-center justify-center md:rounded-[15px] shadow-[0_8px_32px_rgba(0,0,0,0.37)] backdrop-blur-[15px] backdrop-contrast-90 backdrop-brightness-110">
+    <main className="flex items-center justify-center">
       <section className="max-w-md text-white p-2 text-justify flex flex-col gap-10">
-        <HeaderSection className="" />
+        <HeaderSection
+          title="About Moxie"
+          desc="A Bridge of Support. A Badge of Strength. A Daily Reminder That You Matter."
+        />
         <VideoSection className="" />
         <CollapsibleAboutSection className="" />
         <MessagesSection className="" />
