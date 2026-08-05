@@ -8,7 +8,7 @@ import {
   CollapsibleTrigger,
 } from '../ui/collapsible';
 import { Separator } from '../ui/separator';
-import { AboutMeElement, aboutMeElements } from './content';
+import { AboutMeElement, aboutMeElements } from '@/config/about';
 
 export default function CollapsibleAboutSection({
   className,

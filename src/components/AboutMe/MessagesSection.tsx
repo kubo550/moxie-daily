@@ -1,5 +1,5 @@
+import { messages } from '@/config/about';
 import { cn } from '@/lib/utils';
-import { messages } from './content';
 
 export default function MessagesSection({ className }: { className: string }) {
   return (
