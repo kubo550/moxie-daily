@@ -79,7 +79,7 @@ export const ChatWindow: React.FC<ChatWindowProps> = ({ type }) => {
   const suggestions = getGreetingCustomerMessageSuggestions(type);
 
   return (
-    <div className="max-w-xl flex flex-col bg-gradient-to-br from-gray-800 via-gray-900 to-black absolute top-[60px] min-h-[calc(100vh-60px)] left-0 sm:left-1/2 sm:transform sm:-translate-x-1/2 min-w-[100%] sm:min-w-[500px] sm:max-w-[500px] shadow-lg rounded-lg">
+    <div className="h-full w-full sm:w-[500px] sm:max-w-full mx-auto flex flex-col bg-gradient-to-br from-gray-800 via-gray-900 to-black shadow-lg rounded-lg">
       <div className="min-w-full pt-5 pb-3 px-2 text-white flex items-center gap-2">
         <Link
           to={`/pages/chat`}
@@ -144,7 +144,7 @@ export const ChatWindow: React.FC<ChatWindowProps> = ({ type }) => {
         </div>
       )}
 
-      <div className="p-4 bg-gradient-to-br from-gray-800 via-gray-900 to-black text-white border-t border-white/10 flex items-center space-x-2 mb-[80px]">
+      <div className="shrink-0 p-4 bg-gradient-to-br from-gray-800 via-gray-900 to-black text-white border-t border-white/10 flex items-center space-x-2">
         <input
           type="text"
           className="flex-1 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 "

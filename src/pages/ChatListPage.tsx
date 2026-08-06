@@ -2,7 +2,7 @@ import { ChatList } from '@/components/ChatList.tsx';
 
 export const ChatListPage = () => {
   return (
-    <div className="min-h-screen pt-[60px] pb-[60px]">
+    <div className="min-h-full pt-4 pb-20">
       <ChatList />
     </div>
   );

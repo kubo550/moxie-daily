@@ -21,7 +21,7 @@ export const FooterNavbar = () => {
   const isOnChallengesPage = location.pathname === '/pages/challenges';
 
   return (
-    <div className="fixed bottom-0 left-0 w-full bg-black text-white flex justify-around items-center py-3 z-50 h-[60px]">
+    <div className="shrink-0 w-full bg-black text-white flex justify-around items-center py-3 z-50 h-[60px]">
       <NavLink
         to="/"
         className={`flex flex-col items-center text-xs active:scale-110 transition duration-200 mt-2`}
