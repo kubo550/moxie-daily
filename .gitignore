@@ -24,3 +24,6 @@ dist-ssr
 *.sw?
 
 .env
+
+# downloaded ffmpeg binary used by scripts/compress-videos.js
+scripts/.bin

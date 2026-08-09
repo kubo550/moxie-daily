@@ -1,0 +1,125 @@
+import { FuelVideo } from '@/types/Fuel.ts';
+// QuoteType import is needed once you assign `type` to a clip - see the
+// EXAMPLE blocks below.
+
+/**
+ * Raw, unlabeled export batch dropped into public/video/ for local preview.
+ * These clips have no caption or QuoteType assigned yet - fill those in per
+ * clip as you review them, or delete entries for ones that don't fit. Large
+ * exports like these should not ship as-is; see public/video/README.md and
+ * .gitignore before committing.
+ */
+export const FUEL_VIDEOS: FuelVideo[] = [
+  { id: 'new-04', source: { kind: 'file', url: '/video/New_04.mp4' } },
+  { id: 'new-05', source: { kind: 'file', url: '/video/New_05.mp4' } },
+  { id: 'new-06', source: { kind: 'file', url: '/video/New_06.mp4' } },
+  { id: 'new-07', source: { kind: 'file', url: '/video/New_07.mp4' } },
+  { id: 'new-08', source: { kind: 'file', url: '/video/New_08.mp4' } },
+  { id: 'new-09', source: { kind: 'file', url: '/video/New_09.mp4' } },
+  { id: 'new-10', source: { kind: 'file', url: '/video/New_10.mp4' } },
+  { id: 'new-11', source: { kind: 'file', url: '/video/New_11.mp4' } },
+  { id: 'new-12', source: { kind: 'file', url: '/video/New_12.mp4' } },
+  { id: 'new-14', source: { kind: 'file', url: '/video/New_14.mp4' } },
+  { id: 'new-15', source: { kind: 'file', url: '/video/New_15.mp4' } },
+  { id: 'new-70', source: { kind: 'file', url: '/video/New_70.mp4' } },
+  { id: 'new-78', source: { kind: 'file', url: '/video/New_78.mp4' } },
+  { id: 'new-79', source: { kind: 'file', url: '/video/New_79.mp4' } },
+  { id: 'new-53', source: { kind: 'file', url: '/video/New_53.mp4' } },
+  { id: 'new-01', source: { kind: 'file', url: '/video/New_01.mp4' } },
+  { id: 'new-02', source: { kind: 'file', url: '/video/New_02.mp4' } },
+  { id: 'new-03', source: { kind: 'file', url: '/video/New_03.mp4' } },
+  { id: 'new-13', source: { kind: 'file', url: '/video/New_13.mp4' } },
+  { id: 'new-16', source: { kind: 'file', url: '/video/New_16.mp4' } },
+  { id: 'new-17', source: { kind: 'file', url: '/video/New_17.mp4' } },
+  { id: 'new-18', source: { kind: 'file', url: '/video/New_18.mp4' } },
+  { id: 'new-19', source: { kind: 'file', url: '/video/New_19.mp4' } },
+  { id: 'new-20', source: { kind: 'file', url: '/video/New_20.mp4' } },
+  { id: 'new-21', source: { kind: 'file', url: '/video/New_21.mp4' } },
+  { id: 'new-22', source: { kind: 'file', url: '/video/New_22.mp4' } },
+  { id: 'new-23', source: { kind: 'file', url: '/video/New_23.mp4' } },
+  { id: 'new-24', source: { kind: 'file', url: '/video/New_24.mp4' } },
+  { id: 'new-25', source: { kind: 'file', url: '/video/New_25.mp4' } },
+  { id: 'new-26', source: { kind: 'file', url: '/video/New_26.mp4' } },
+  { id: 'new-27', source: { kind: 'file', url: '/video/New_27.mp4' } },
+  { id: 'new-28', source: { kind: 'file', url: '/video/New_28.mp4' } },
+  { id: 'new-29', source: { kind: 'file', url: '/video/New_29.mp4' } },
+  { id: 'new-30', source: { kind: 'file', url: '/video/New_30.mp4' } },
+  { id: 'new-31', source: { kind: 'file', url: '/video/New_31.mp4' } },
+  { id: 'new-32', source: { kind: 'file', url: '/video/New_32.mp4' } },
+  { id: 'new-33', source: { kind: 'file', url: '/video/New_33.mp4' } },
+  { id: 'new-34', source: { kind: 'file', url: '/video/New_34.mp4' } },
+  { id: 'new-35', source: { kind: 'file', url: '/video/New_35.mp4' } },
+  { id: 'new-36', source: { kind: 'file', url: '/video/New_36.mp4' } },
+  { id: 'new-37', source: { kind: 'file', url: '/video/New_37.mp4' } },
+  { id: 'new-38', source: { kind: 'file', url: '/video/New_38.mp4' } },
+  { id: 'new-39', source: { kind: 'file', url: '/video/New_39.mp4' } },
+  { id: 'new-40', source: { kind: 'file', url: '/video/New_40.mp4' } },
+  { id: 'new-41', source: { kind: 'file', url: '/video/New_41.mp4' } },
+  { id: 'new-42', source: { kind: 'file', url: '/video/New_42.mp4' } },
+  { id: 'new-43', source: { kind: 'file', url: '/video/New_43.mp4' } },
+  { id: 'new-44', source: { kind: 'file', url: '/video/New_44.mp4' } },
+  { id: 'new-45', source: { kind: 'file', url: '/video/New_45.mp4' } },
+  { id: 'new-46', source: { kind: 'file', url: '/video/New_46.mp4' } },
+  { id: 'new-47', source: { kind: 'file', url: '/video/New_47.mp4' } },
+  { id: 'new-48', source: { kind: 'file', url: '/video/New_48.mp4' } },
+  { id: 'new-49', source: { kind: 'file', url: '/video/New_49.mp4' } },
+  { id: 'new-50', source: { kind: 'file', url: '/video/New_50.mp4' } },
+  { id: 'new-51', source: { kind: 'file', url: '/video/New_51.mp4' } },
+  { id: 'new-52', source: { kind: 'file', url: '/video/New_52.mp4' } },
+  { id: 'new-54', source: { kind: 'file', url: '/video/New_54.mp4' } },
+  { id: 'new-55', source: { kind: 'file', url: '/video/New_55.mp4' } },
+  { id: 'new-56', source: { kind: 'file', url: '/video/New_56.mp4' } },
+  { id: 'new-57', source: { kind: 'file', url: '/video/New_57.mp4' } },
+  { id: 'new-58', source: { kind: 'file', url: '/video/New_58.mp4' } },
+  { id: 'new-59', source: { kind: 'file', url: '/video/New_59.mp4' } },
+  { id: 'new-60', source: { kind: 'file', url: '/video/New_60.mp4' } },
+  { id: 'new-61', source: { kind: 'file', url: '/video/New_61.mp4' } },
+  { id: 'new-62', source: { kind: 'file', url: '/video/New_62.mp4' } },
+  { id: 'new-63', source: { kind: 'file', url: '/video/New_63.mp4' } },
+  { id: 'new-64', source: { kind: 'file', url: '/video/New_64.mp4' } },
+  { id: 'new-65', source: { kind: 'file', url: '/video/New_65.mp4' } },
+  { id: 'new-66', source: { kind: 'file', url: '/video/New_66.mp4' } },
+  { id: 'new-67', source: { kind: 'file', url: '/video/New_67.mp4' } },
+  { id: 'new-68', source: { kind: 'file', url: '/video/New_68.mp4' } },
+  { id: 'new-69', source: { kind: 'file', url: '/video/New_69.mp4' } },
+  { id: 'new-71', source: { kind: 'file', url: '/video/New_71.mp4' } },
+  { id: 'new-72', source: { kind: 'file', url: '/video/New_72.mp4' } },
+  { id: 'new-73', source: { kind: 'file', url: '/video/New_73.mp4' } },
+  { id: 'new-74', source: { kind: 'file', url: '/video/New_74.mp4' } },
+  { id: 'new-75', source: { kind: 'file', url: '/video/New_75.mp4' } },
+  { id: 'new-76', source: { kind: 'file', url: '/video/New_76.mp4' } },
+  { id: 'new-77', source: { kind: 'file', url: '/video/New_77.mp4' } },
+  { id: 'new-80', source: { kind: 'file', url: '/video/New_80.mp4' } },
+  { id: 'new-81', source: { kind: 'file', url: '/video/New_81.mp4' } },
+  { id: 'new-82', source: { kind: 'file', url: '/video/New_82.mp4' } },
+  { id: 'new-83', source: { kind: 'file', url: '/video/New_83.mp4' } },
+  { id: 'new-84', source: { kind: 'file', url: '/video/New_84.mp4' } },
+  { id: 'new-85', source: { kind: 'file', url: '/video/New_85.mp4' } },
+  { id: 'new-86', source: { kind: 'file', url: '/video/New_86.mp4' } },
+];
+
+/*
+ * EXAMPLE: Local video clip in public/video/
+ * {
+ *   id: 'fuel-sample-local',
+ *   source: { kind: 'file', url: '/video/my-short-clip.mp4' },
+ *   caption: 'Every small step forward counts.',
+ *   type: QuoteType.motivation,
+ *   posterUrl: '/video/my-short-clip-poster.png',
+ * },
+ */
+
+/*
+ * EXAMPLE: Streaming host (Cloudflare Stream, Bunny, Mux)
+ * {
+ *   id: 'fuel-streaming-example',
+ *   source: {
+ *     kind: 'hls',
+ *     url: 'https://streaming-host.com/manifest.m3u8',
+ *     playbackId: 'abc123def456',
+ *   },
+ *   caption: 'Your resilience is proof of your strength.',
+ *   type: QuoteType.recovery_strength,
+ *   posterUrl: 'https://streaming-host.com/poster.jpg',
+ * },
+ */
