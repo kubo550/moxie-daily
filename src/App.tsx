@@ -10,6 +10,7 @@ import { ChallengesListPage } from '@/pages/ChallengesListPage.tsx';
 import { QuickSupportPage } from '@/pages/QuickSupportPage.tsx';
 import { RecoverySupportPage } from '@/pages/RecoverySupportPage.tsx';
 import { CrisisResourcesFAB } from '@/components/CrisisResourcesFAB.tsx';
+import { ReelsPage } from './pages/ReelsPage.tsx';
 
 const App = () => {
   return (
@@ -28,6 +29,7 @@ const App = () => {
             <Route path="/pages/challenges" element={<ChallengesListPage />} />
             <Route path="/pages/support/:type" element={<QuickSupportPage />} />
             <Route path="/pages/recovery" element={<RecoverySupportPage />} />
+            <Route path="/pages/fuel" element={<ReelsPage />} />
           </Routes>
         </main>
         <FooterNavbar />

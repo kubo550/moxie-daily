@@ -1,12 +1,13 @@
+import { COLORS } from '@/components/styles.ts';
 import {
-  FaHome,
   FaCommentDots,
+  FaHandsHelping,
+  FaHome,
   FaInfoCircle,
   FaLifeRing,
-  FaHandsHelping,
+  FaVideo,
 } from 'react-icons/fa';
 import { NavLink, useLocation } from 'react-router-dom';
-import { COLORS } from '@/components/styles.ts';
 
 export const FooterNavbar = () => {
   const location = useLocation();
@@ -47,6 +48,13 @@ export const FooterNavbar = () => {
           )}
         </div>
         <span className="mt-1">Challenges</span>
+      </NavLink>
+      <NavLink
+        to="/pages/fuel"
+        className="flex flex-col items-center text-xs active:scale-110 transition duration-200 mt-2"
+      >
+        <FaVideo size={20} color={getActiveColor('/pages/fuel')} />
+        <span>Fuel</span>
       </NavLink>
       <NavLink
         to="/pages/recovery"
