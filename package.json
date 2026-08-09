@@ -9,6 +9,7 @@
     "lint": "eslint . ",
     "lint:fix": "prettier --write ./src",
     "preview": "vite preview",
+    "compress-videos": "node scripts/compress-videos.js",
     "prepare": "husky"
   },
   "engines": {
