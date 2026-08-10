@@ -1,5 +1,10 @@
 import './App.css';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import {
+  BrowserRouter as Router,
+  Navigate,
+  Route,
+  Routes,
+} from 'react-router-dom';
 import { DailyQuotePage } from './pages/DailyQuotePage.tsx';
 import { Navbar } from './components/Navbar.tsx';
 import { FooterNavbar } from '@/components/FooterNavbar.tsx';
@@ -8,8 +13,10 @@ import { ChatListPage } from '@/pages/ChatListPage.tsx';
 import { ChatPage } from '@/pages/ChatPage.tsx';
 import { ChallengesListPage } from '@/pages/ChallengesListPage.tsx';
 import { QuickSupportPage } from '@/pages/QuickSupportPage.tsx';
-import { RecoverySupportPage } from '@/pages/RecoverySupportPage.tsx';
-import { CrisisResourcesFAB } from '@/components/CrisisResourcesFAB.tsx';
+import {
+  CrisisResourcesFAB,
+  HELP_SHEET_PARAM,
+} from '@/components/CrisisResourcesFAB.tsx';
 import { ReelsPage } from './pages/ReelsPage.tsx';
 
 const App = () => {
@@ -28,7 +35,12 @@ const App = () => {
             <Route path="/pages/about" element={<AboutMePage />} />
             <Route path="/pages/challenges" element={<ChallengesListPage />} />
             <Route path="/pages/support/:type" element={<QuickSupportPage />} />
-            <Route path="/pages/recovery" element={<RecoverySupportPage />} />
+            {/* Recovery Support lives in the Get Help sheet now — keep old
+                links working by opening it on the home page. */}
+            <Route
+              path="/pages/recovery"
+              element={<Navigate to={`/?${HELP_SHEET_PARAM}=1`} replace />}
+            />
             <Route path="/pages/fuel" element={<ReelsPage />} />
           </Routes>
         </main>

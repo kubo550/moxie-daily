@@ -68,7 +68,11 @@ export const DailyQuotePage = () => {
         className="flex flex-col items-center justify-center px-4 relative"
         style={{ height: 'calc(50dvh - 60px)' }}
       >
-        <div className="flex-1 flex items-center justify-center w-full">
+        {/* pb leaves room for the absolutely positioned Next button below */}
+        <div
+          className="flex-1 flex items-center justify-center w-full pb-16"
+          aria-live="polite"
+        >
           <QuoteProviderProps quote={currentQuote} />
         </div>
 
@@ -77,15 +81,15 @@ export const DailyQuotePage = () => {
           <ShareButton />
         </div>
 
-        {/* Navigation button */}
-        <div className="absolute bottom-6 left-0 right-0 flex items-center justify-center px-4">
+        {/* Labelled instead of a bare arrow, so it reads as "there are more quotes" */}
+        <div className="absolute bottom-5 left-0 right-0 flex items-center justify-center px-4">
           <Button
             onClick={getNextQuote}
             variant="ghost"
-            size="icon"
-            className="text-[#8B8DFF] hover:bg-white/10 rounded-full h-9 w-9"
+            className="h-11 gap-2 rounded-full border border-[#8B8DFF]/40 bg-[#8B8DFF]/10 px-6 text-sm font-semibold text-[#8B8DFF] backdrop-blur-sm select-none hover:bg-[#8B8DFF]/20 hover:text-[#8B8DFF] active:scale-95"
           >
-            <ChevronRight className="h-5 w-5" />
+            Next Quote
+            <ChevronRight className="h-4 w-4" />
           </Button>
         </div>
       </section>

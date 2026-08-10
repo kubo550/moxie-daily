@@ -1,7 +1,6 @@
 import { COLORS } from '@/components/styles.ts';
 import {
   FaCommentDots,
-  FaHandsHelping,
   FaHome,
   FaInfoCircle,
   FaLifeRing,
@@ -55,13 +54,6 @@ export const FooterNavbar = () => {
       >
         <FaVideo size={20} color={getActiveColor('/pages/fuel')} />
         <span>Fuel</span>
-      </NavLink>
-      <NavLink
-        to="/pages/recovery"
-        className={`flex flex-col items-center text-xs active:scale-110 transition duration-200 mt-2`}
-      >
-        <FaHandsHelping size={20} color={getActiveColor('/pages/recovery')} />
-        <span className="mt-1">Recovery</span>
       </NavLink>
       <NavLink
         to="/pages/about"
