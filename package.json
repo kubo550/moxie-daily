@@ -13,7 +13,7 @@
     "prepare": "husky"
   },
   "engines": {
-    "node": ">=20"
+    "node": ">=24"
   },
   "dependencies": {
     "@radix-ui/react-dialog": "^1.1.6",
